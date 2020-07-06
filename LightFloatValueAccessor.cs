@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityAnimationModifiers.Accessors
+namespace dninosores.UnityValueAccessors
 {
 	[Serializable]
 	public class LightFloatValueAccessor : ValueAccessor<float>

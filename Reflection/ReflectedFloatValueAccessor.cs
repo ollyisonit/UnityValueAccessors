@@ -3,7 +3,7 @@
 using System;
 using System.Reflection;
 
-namespace dninosores.UnityAnimationModifiers.Accessors
+namespace dninosores.UnityValueAccessors
 {
 	[Serializable]
 	public class ReflectedFloatValueAccessor : ValueAccessor<float>

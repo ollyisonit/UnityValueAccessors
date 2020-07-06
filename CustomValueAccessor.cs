@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace dninosores.UnityAnimationModifiers.Accessors
+namespace dninosores.UnityValueAccessors
 {
 	public abstract class CustomValueAccessor<T> : MonoBehaviour
 	{

@@ -1,4 +1,4 @@
-﻿namespace dninosores.UnityAnimationModifiers.Accessors
+﻿namespace dninosores.UnityValueAccessors
 {
 	public abstract class CustomFloatValueAccessor : CustomValueAccessor<float>
 	{

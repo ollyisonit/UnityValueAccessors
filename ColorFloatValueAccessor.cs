@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityAnimationModifiers.Accessors
+namespace dninosores.UnityValueAccessors
 {
 	public abstract class ColorFloatValueAccessor : ValueAccessor<float>
 	{

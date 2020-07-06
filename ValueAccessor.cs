@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace dninosores.UnityAnimationModifiers.Accessors
+namespace dninosores.UnityValueAccessors
 {
 	[Serializable]
 	public abstract class ValueAccessor<T>
