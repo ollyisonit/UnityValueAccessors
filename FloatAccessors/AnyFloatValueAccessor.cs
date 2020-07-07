@@ -43,6 +43,23 @@ namespace dninosores.UnityValueAccessors
 		public ReflectedFloatValueAccessor reflectedAccessor;
 
 
+		public override void Reset(GameObject o)
+		{
+			transformToModify = new TransformFloatValueAccessor();
+			transformToModify.Reset(o);
+			lightToModify = new LightFloatValueAccessor();
+			lightToModify.Reset(o);
+			rectToModify = new RectTransformFloatValueAccessor();
+			rectToModify.Reset(o);
+			customAccessor = o.GetComponent<CustomFloatValueAccessor>();
+			imageToModify = new ImageColorFloatValueAccessor();
+			imageToModify.Reset(o);
+			reflectedAccessor = new ReflectedFloatValueAccessor();
+			reflectedAccessor.Reset(o);
+		}
+
+
+
 		public override float GetValue()
 		{
 			switch (accessType)

@@ -77,5 +77,10 @@ namespace dninosores.UnityValueAccessors
 					throw new NotImplementedException("Case not found for " + valueType);
 			}
 		}
+
+		public override void Reset(GameObject attachedObject)
+		{
+			light = attachedObject.GetComponent<Light>();
+		}
 	}
 }

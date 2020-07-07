@@ -7,6 +7,12 @@ namespace dninosores.UnityValueAccessors
 	public class ImageColorFloatValueAccessor : ColorFloatValueAccessor
 	{
 		public Image image;
+
+		public override void Reset(GameObject attachedObject)
+		{
+			image = attachedObject.GetComponent<Image>();
+		}
+
 		protected override Color GetColor()
 		{
 			return image.color;

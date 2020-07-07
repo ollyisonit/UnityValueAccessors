@@ -90,5 +90,10 @@ namespace dninosores.UnityValueAccessors
 					throw new NotImplementedException("Case not found for ValueType " + valueType);
 			}
 		}
+
+		public override void Reset(GameObject attachedObject)
+		{
+			rectTransform = attachedObject.GetComponent<RectTransform>();
+		}
 	}
 }

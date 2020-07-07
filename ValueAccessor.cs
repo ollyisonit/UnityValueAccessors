@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace dninosores.UnityValueAccessors
 {
@@ -8,5 +9,7 @@ namespace dninosores.UnityValueAccessors
 		public abstract T GetValue();
 
 		public abstract void SetValue(T value);
+
+		public abstract void Reset(GameObject attachedObject);
 	}
 }

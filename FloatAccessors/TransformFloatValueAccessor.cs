@@ -89,5 +89,9 @@ namespace dninosores.UnityValueAccessors
 			}
 		}
 
+		public override void Reset(GameObject attachedObject)
+		{
+			transform = attachedObject.transform;
+		}
 	}
 }
