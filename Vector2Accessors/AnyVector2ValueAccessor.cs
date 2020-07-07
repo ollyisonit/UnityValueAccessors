@@ -59,7 +59,7 @@ namespace dninosores.UnityValueAccessors
 					reflect.SetValue(value);
 					break;
 				default:
-					throw new NotImplementedException("Case not found for " + accessType)
+					throw new NotImplementedException("Case not found for " + accessType);
 			}
 		}
 	}
