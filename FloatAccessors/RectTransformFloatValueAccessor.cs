@@ -7,13 +7,8 @@ namespace dninosores.UnityValueAccessors
 	public class RectTransformFloatValueAccessor : ValueAccessor<float>
 	{
 		public RectTransform rectTransform;
-		public Axis axis;
 		public ValueType valueType;
-
-		public enum Axis
-		{
-			X, Y
-		}
+		public Axis2D axis;
 
 		public enum ValueType
 		{
@@ -26,44 +21,16 @@ namespace dninosores.UnityValueAccessors
 			sizeDelta
 		}
 
-		private float GetVector(Axis axis, Vector2 v)
-		{
-			switch (axis)
-			{
-				case Axis.X:
-					return v.x;
-				case Axis.Y:
-					return v.y;
-				default:
-					throw new NotImplementedException("No case found for axis " + axis);
-			}
-		}
 
 		private float GetVector(Vector2 v)
 		{
-			return GetVector(axis, v);
+			return Vector2FloatAccessor.GetValue(axis, v);
 		}
 
-
-		private Vector2 SetVector(Axis axis, Vector2 v, float value)
-		{
-			switch (axis)
-			{
-				case Axis.X:
-					v.x = value;
-					break;
-				case Axis.Y:
-					v.y = value;
-					break;
-				default:
-					throw new NotImplementedException("No case found for axis " + axis);
-			}
-			return v;
-		}
 
 		private Vector2 SetVector(Vector2 v, float value)
 		{
-			return SetVector(axis, v, value);
+			return Vector2FloatAccessor.SetValue(axis, v, value);
 		}
 
 		public override float GetValue()

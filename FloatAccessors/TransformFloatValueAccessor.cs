@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dninosores.UnityEditorAttributes;
+using System;
 using UnityEngine;
 
 namespace dninosores.UnityValueAccessors
@@ -16,24 +17,21 @@ namespace dninosores.UnityValueAccessors
 			LocalScaleAllAxes
 		}
 
-		public enum Axis
-		{
-			X,
-			Y,
-			Z
-		}
-
 		public Transform transform;
 		public TransformType transformType;
-		public Axis transformAxis;
+
+		[ConditionalHide(new string[] { "transformType", "transformType", "transformType", "transformType", "transformType" },
+			new object[]{TransformType.Position, TransformType.LocalPosition, TransformType.Rotation,
+			TransformType.LocalRotation, TransformType.LocalScale}, ConditionalHideAttribute.FoldBehavior.Or)]
+		public Axis3D transformAxis;
 
 		public override float GetValue()
 		{
 			if (transformType == TransformType.LocalScaleAllAxes)
 			{
-				return GetValueFromVector3(transformAxis, transform.localScale);
+				return Vector3FloatAccessor.GetValue(transformAxis, transform.localScale);
 			}
-			return GetValueFromVector3(transformAxis, GetVector3FromTransform(transformType, transform));
+			return Vector3FloatAccessor.GetValue(transformAxis, GetVector3FromTransform(transformType, transform));
 		}
 
 		public override void SetValue(float value)
@@ -44,7 +42,7 @@ namespace dninosores.UnityValueAccessors
 				return;
 			}
 			SetVector3FromTransform(transformType, transform,
-						SetValueFromVector3(transformAxis, GetVector3FromTransform(transformType, transform), value));
+						Vector3FloatAccessor.SetValue(transformAxis, GetVector3FromTransform(transformType, transform), value));
 		}
 
 		public Vector3 GetVector3FromTransform(TransformType ttype, Transform transform)
@@ -91,39 +89,5 @@ namespace dninosores.UnityValueAccessors
 			}
 		}
 
-
-		public float GetValueFromVector3(Axis axis, Vector3 vector)
-		{
-			switch (axis)
-			{
-				case Axis.X:
-					return vector.x;
-				case Axis.Y:
-					return vector.y;
-				case Axis.Z:
-					return vector.z;
-				default:
-					throw new NotImplementedException(axis + " not implemented.");
-			}
-		}
-
-
-		public Vector3 SetValueFromVector3(Axis axis, Vector3 vector, float value)
-		{
-			switch (axis)
-			{
-				case Axis.X:
-					vector.x = value;
-					return vector;
-				case Axis.Y:
-					vector.y = value;
-					return vector;
-				case Axis.Z:
-					vector.z = value;
-					return vector;
-				default:
-					throw new NotImplementedException(axis + " not implemented.");
-			}
-		}
 	}
 }
