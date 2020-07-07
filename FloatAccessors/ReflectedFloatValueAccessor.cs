@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dninosores.UnityEditorAttributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -11,11 +12,11 @@ namespace dninosores.UnityValueAccessors
 	public class ReflectedFloatValueAccessor : ValueAccessor<float>
 	{
 		public UnityEngine.Object sourceObject;
-		public string path;
+		public string field;
 
 		public override float GetValue()
 		{
-			string[] pathArr = path.Split('.');
+			string[] pathArr = field.Split('.');
 			object current = sourceObject;
 			for (int i = 0; i < pathArr.Length - 1; i++)
 			{
@@ -28,7 +29,7 @@ namespace dninosores.UnityValueAccessors
 
 		public override void SetValue(float value)
 		{
-			string[] pathArr = path.Split('.');
+			string[] pathArr = field.Split('.');
 			object[] objects = new object[pathArr.Length + 1];
 			objects[0] = sourceObject;
 			for (int i = 0; i < pathArr.Length; i++)

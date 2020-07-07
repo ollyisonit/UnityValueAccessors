@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dninosores.UnityEditorAttributes;
+using System;
 using UnityEngine;
 
 namespace dninosores.UnityValueAccessors
@@ -12,11 +13,17 @@ namespace dninosores.UnityValueAccessors
 		{
 			Intensity,
 			Range,
+			Color,
 			SpotAngle,
 			InnerSpotAngle,
 			BounceIntensity,
 			ColorTemperature
 		}
+
+
+		[ConditionalHide("valueType", ValueType.Color)]
+		public ColorChannel channel;
+
 
 		public override float GetValue()
 		{
@@ -26,6 +33,8 @@ namespace dninosores.UnityValueAccessors
 					return light.innerSpotAngle;
 				case ValueType.Range:
 					return light.range;
+				case ValueType.Color:
+					return ColorFloatAccessor.GetChannel(light.color, channel);
 				case ValueType.SpotAngle:
 					return light.spotAngle;
 				case ValueType.Intensity:
@@ -48,6 +57,9 @@ namespace dninosores.UnityValueAccessors
 					break;
 				case ValueType.Range:
 					light.range = value;
+					break;
+				case ValueType.Color:
+					light.color = ColorFloatAccessor.SetChannel(light.color, channel, value);
 					break;
 				case ValueType.SpotAngle:
 					light.spotAngle = value;

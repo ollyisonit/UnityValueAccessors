@@ -1,4 +1,4 @@
-﻿using dninosores.UnityConditionalHideAttribute;
+﻿using dninosores.UnityEditorAttributes;
 using System;
 using UnityEngine;
 
@@ -22,37 +22,24 @@ namespace dninosores.UnityValueAccessors
 
 		public AccessType accessType;
 
-		[ConditionalHide("accessType", AccessType.Transform)]
+		[ConditionalHide("accessType", AccessType.Transform, "Accessor")]
 		public TransformFloatValueAccessor transformToModify;
 
-		#region LightModifiers
-		public enum LightAttribute
-		{
-			General,
-			Color
-		}
-
 		[ConditionalHide(new string[] { "accessType" }, new object[] { AccessType.Light })]
-		public LightAttribute lightAttribute;
-
-		[ConditionalHide(new string[] { "accessType", "lightAttribute" }, new object[] { AccessType.Light, LightAttribute.General })]
 		public LightFloatValueAccessor lightToModify;
 
-		[ConditionalHide(new string[] { "accessType", "lightAttribute" }, new object[] { AccessType.Light, LightAttribute.Color })]
-		public LightColorFloatValueAccessor lightColorToModify;
-
-		#endregion
-
-		[ConditionalHide("accessType", AccessType.RectTransform)]
+		[ConditionalHide("accessType", AccessType.RectTransform, "Accessor")]
 		public RectTransformFloatValueAccessor rectToModify;
 
-		[ConditionalHide("accessType", AccessType.Custom), Tooltip("Make a script that extends CustomFloatValueAccessor and reference it here")]
+		[ConditionalHide("accessType", AccessType.Custom, "Accessor"), 
+			Tooltip("Make a script that extends CustomFloatValueAccessor and reference it here")]
 		public CustomFloatValueAccessor customAccessor;
 
-		[ConditionalHide("accessType", AccessType.ImageColor)]
+		[ConditionalHide("accessType", AccessType.ImageColor, "Accessor")]
 		public ImageColorFloatValueAccessor imageToModify;
 
-		[ConditionalHide("accessType", AccessType.Reflected)]
+		//[Rename("Accessor"), ConditionalHide("accessType", AccessType.Reflected)]
+		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
 		public ReflectedFloatValueAccessor reflectedAccessor;
 
 
@@ -65,15 +52,7 @@ namespace dninosores.UnityValueAccessors
 				case AccessType.RectTransform:
 					return rectToModify.GetValue();
 				case AccessType.Light:
-					switch (lightAttribute)
-					{
-						case LightAttribute.General:
-							return lightToModify.GetValue();
-						case LightAttribute.Color:
-							return lightColorToModify.GetValue();
-						default:
-							throw new NotImplementedException("No case for LightAttribute " + lightAttribute);
-					}
+					return lightToModify.GetValue();
 				case AccessType.ImageColor:
 					return imageToModify.GetValue();
 				case AccessType.Custom:
@@ -96,17 +75,7 @@ namespace dninosores.UnityValueAccessors
 					rectToModify.SetValue(value);
 					break;
 				case AccessType.Light:
-					switch (lightAttribute)
-					{
-						case LightAttribute.General:
-							lightToModify.SetValue(value);
-							break;
-						case LightAttribute.Color:
-							lightColorToModify.SetValue(value);
-							break;
-						default:
-							throw new NotImplementedException("No case found for LightAttribute " + lightAttribute);
-					}
+					lightToModify.SetValue(value);
 					break;
 				case AccessType.ImageColor:
 					imageToModify.SetValue(value);
