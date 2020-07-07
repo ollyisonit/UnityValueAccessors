@@ -52,24 +52,9 @@ namespace dninosores.UnityValueAccessors
 		[ConditionalHide("accessType", AccessType.ImageColor)]
 		public ImageColorFloatValueAccessor imageToModify;
 
-		#region ReflectedModifiers
-
-		public enum ReflectionType
-		{
-			Simple,
-			Nested
-		}
-
 		[ConditionalHide("accessType", AccessType.Reflected)]
-		public ReflectionType reflectionType;
-
-		[ConditionalHide(new string[] { "accessType", "reflectionType" }, new object[] { AccessType.Reflected, ReflectionType.Simple })]
 		public ReflectedFloatValueAccessor reflectedAccessor;
 
-		[ConditionalHide(new string[] { "accessType", "reflectionType" }, new object[] { AccessType.Reflected, ReflectionType.Nested })]
-		public NestedReflectedFloatValueAccessor nestedReflectedAccessor;
-
-		#endregion
 
 		public override float GetValue()
 		{
@@ -94,15 +79,7 @@ namespace dninosores.UnityValueAccessors
 				case AccessType.Custom:
 					return customAccessor.GetValue();
 				case AccessType.Reflected:
-					switch (reflectionType)
-					{
-						case (ReflectionType.Simple):
-							return reflectedAccessor.GetValue();
-						case (ReflectionType.Nested):
-							return nestedReflectedAccessor.GetValue();
-						default:
-							throw new NotImplementedException("No case for GetValue for " + reflectionType);
-					}
+					return reflectedAccessor.GetValue();
 				default:
 					throw new NotImplementedException("No case for GetValue for accessType " + accessType + "!");
 			}
@@ -138,17 +115,7 @@ namespace dninosores.UnityValueAccessors
 					customAccessor.SetValue(value);
 					break;
 				case AccessType.Reflected:
-					switch (reflectionType)
-					{
-						case (ReflectionType.Simple):
-							reflectedAccessor.SetValue(value);
-							break;
-						case (ReflectionType.Nested):
-							nestedReflectedAccessor.SetValue(value);
-							break;
-						default:
-							throw new NotImplementedException("No case for GetValue for " + reflectionType);
-					}
+					reflectedAccessor.SetValue(value);
 					break;
 				default:
 					throw new NotImplementedException("No case for SetValue for accessType " + accessType + "!");
