@@ -14,7 +14,8 @@ namespace dninosores.UnityAccessors
 		{
 			Transform,
 			Custom,
-			Reflected
+			Reflected,
+			Constant
 		}
 
 		public AccessType accessType;
@@ -28,6 +29,8 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
 		public ReflectedVector3Accessor reflected;
 
+		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
+		public ConstantVector3Accessor constant;
 
 		public override Vector3 GetValue()
 		{
@@ -39,6 +42,8 @@ namespace dninosores.UnityAccessors
 					return custom.GetValue();
 				case AccessType.Reflected:
 					return reflected.GetValue();
+				case AccessType.Constant:
+					return constant.GetValue();
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);
 			}
@@ -51,6 +56,8 @@ namespace dninosores.UnityAccessors
 			custom = attachedObject.GetComponent<CustomVector3Accessor>();
 			reflected = new ReflectedVector3Accessor();
 			reflected.Reset(attachedObject);
+			constant = new ConstantVector3Accessor();
+			constant.Reset(attachedObject);
 		}
 
 		public override void SetValue(Vector3 value)
@@ -65,6 +72,9 @@ namespace dninosores.UnityAccessors
 					break;
 				case AccessType.Reflected:
 					reflected.SetValue(value);
+					break;
+				case AccessType.Constant:
+					constant.SetValue(value);
 					break;
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);

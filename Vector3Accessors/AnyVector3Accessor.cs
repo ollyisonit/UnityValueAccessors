@@ -10,6 +10,7 @@ namespace dninosores.UnityAccessors
 		public enum AccessType
 		{
 			Transform,
+			Float,
 			Vector2,
 			Custom,
 			Reflected,
@@ -30,6 +31,9 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.Vector2, "Accessor")]
 		public Vector2Vector3Accessor vector2;
 
+		[ConditionalHide("accessType", AccessType.Float, "Accessor")]
+		public FloatVector3Accessor Float;
+
 		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantVector3Accessor constant;
 
@@ -47,6 +51,8 @@ namespace dninosores.UnityAccessors
 					return vector2.GetValue();
 				case AccessType.Constant:
 					return constant.GetValue();
+				case AccessType.Float:
+					return Float.Value;
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);
 			}
@@ -63,6 +69,8 @@ namespace dninosores.UnityAccessors
 			vector2.Reset(attachedObject);
 			constant = new ConstantVector3Accessor();
 			constant.Reset(attachedObject);
+			Float = new FloatVector3Accessor();
+			Float.Reset(attachedObject);
 		}
 
 		public override void SetValue(Vector3 value)
@@ -83,6 +91,9 @@ namespace dninosores.UnityAccessors
 					break;
 				case AccessType.Constant:
 					constant.SetValue(value);
+					break;
+				case AccessType.Float:
+					Float.Value = value;
 					break;
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);
