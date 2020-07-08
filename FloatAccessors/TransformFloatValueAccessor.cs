@@ -76,10 +76,12 @@ namespace dninosores.UnityValueAccessors
 					transform.localPosition = value;
 					break;
 				case TransformType.Rotation:
-					transform.eulerAngles = value;
+					transform.rotation = Quaternion.identity;
+					transform.Rotate(value, Space.World);
 					break;
 				case TransformType.LocalRotation:
-					transform.localEulerAngles = value;
+					transform.localRotation = Quaternion.identity;
+					transform.Rotate(value, Space.Self);
 					break;
 				case TransformType.LocalScale:
 					transform.localScale = value;

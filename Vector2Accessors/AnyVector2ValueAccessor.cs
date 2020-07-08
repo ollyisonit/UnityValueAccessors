@@ -27,14 +27,19 @@ namespace dninosores.UnityValueAccessors
 
 		public override Vector2 GetValue()
 		{
-			return accessType switch
+			switch (accessType)
 			{
-				AccessType.RectTransform => rect.GetValue(),
-				AccessType.Custom => cust.GetValue(),
-				AccessType.Reflected => reflect.GetValue(),
-				_ => throw new NotImplementedException("Case not found for " + accessType)
-			};
+				case AccessType.RectTransform:
+					return rect.GetValue();
+				case AccessType.Custom:
+					return cust.GetValue();
+				case AccessType.Reflected:
+					return reflect.GetValue();
+				default:
+					throw new NotImplementedException("Case not found for " + accessType);
+			}
 		}
+
 
 		public override void Reset(GameObject attachedObject)
 		{
@@ -44,6 +49,7 @@ namespace dninosores.UnityValueAccessors
 			reflect = new ReflectedVector2ValueAccessor();
 			reflect.Reset(attachedObject);
 		}
+
 
 		public override void SetValue(Vector2 value)
 		{

@@ -22,17 +22,26 @@ namespace dninosores.UnityValueAccessors
 
 		public override Vector2 GetValue()
 		{
-			return valueType switch
+			switch (valueType)
 			{
-				ValueType.anchoredPosition => rect.anchoredPosition,
-				ValueType.anchorMax => rect.anchorMax,
-				ValueType.anchorMin => rect.anchorMin,
-				ValueType.offsetMax => rect.offsetMax,
-				ValueType.offsetMin => rect.offsetMin,
-				ValueType.pivot => rect.pivot,
-				ValueType.sizeDelta => rect.sizeDelta,
-				_ => throw new NotImplementedException("Case not found for " + valueType),
-			};
+				case ValueType.anchoredPosition:
+					return rect.anchoredPosition;
+				case ValueType.anchorMax:
+					return rect.anchorMax;
+				case ValueType.anchorMin:
+					return rect.anchorMin;
+				case ValueType.offsetMax:
+					return rect.offsetMax;
+				case ValueType.offsetMin:
+					return rect.offsetMin;
+				case ValueType.pivot:
+					return rect.pivot;
+				case ValueType.sizeDelta:
+					return rect.sizeDelta;
+				default:
+					throw new NotImplementedException("Case not found for " + valueType);
+
+			}
 		}
 
 		public override void Reset(GameObject attachedObject)
@@ -65,7 +74,7 @@ namespace dninosores.UnityValueAccessors
 					rect.sizeDelta = value;
 					break;
 				default:
-					throw new NotImplementedException("Case not found for " + valueType),
+					throw new NotImplementedException("Case not found for " + valueType);
 
 			}
 		}
