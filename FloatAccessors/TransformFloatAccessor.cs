@@ -29,9 +29,9 @@ namespace dninosores.UnityAccessors
 		{
 			if (transformType == TransformType.LocalScaleAllAxes)
 			{
-				return Vector3FloatAccessor.GetValue(transformAxis, transform.localScale);
+				return Vector3FloatUtil.GetValue(transformAxis, transform.localScale);
 			}
-			return Vector3FloatAccessor.GetValue(transformAxis, GetVector3FromTransform(transformType, transform));
+			return Vector3FloatUtil.GetValue(transformAxis, GetVector3FromTransform(transformType, transform));
 		}
 
 		public override void SetValue(float value)
@@ -42,7 +42,7 @@ namespace dninosores.UnityAccessors
 				return;
 			}
 			SetVector3FromTransform(transformType, transform,
-						Vector3FloatAccessor.SetValue(transformAxis, GetVector3FromTransform(transformType, transform), value));
+						Vector3FloatUtil.SetValue(transformAxis, GetVector3FromTransform(transformType, transform), value));
 		}
 
 		public Vector3 GetVector3FromTransform(TransformType ttype, Transform transform)

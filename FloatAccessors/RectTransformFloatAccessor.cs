@@ -24,13 +24,13 @@ namespace dninosores.UnityAccessors
 
 		private float GetVector(Vector2 v)
 		{
-			return Vector2FloatAccessor.GetValue(axis, v);
+			return Vector2FloatUtil.GetValue(axis, v);
 		}
 
 
 		private Vector2 SetVector(Vector2 v, float value)
 		{
-			return Vector2FloatAccessor.SetValue(axis, v, value);
+			return Vector2FloatUtil.SetValue(axis, v, value);
 		}
 
 		public override float GetValue()

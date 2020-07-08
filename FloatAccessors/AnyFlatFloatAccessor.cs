@@ -16,7 +16,7 @@ namespace dninosores.UnityAccessors
 			Transform,
 			RectTransform,
 			Light,
-			ImageColor,
+			AudioSource,
 			Custom,
 			Reflected,
 			Constant
@@ -30,6 +30,9 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide(new string[] { "accessType" }, new object[] { AccessType.Light })]
 		public LightFloatAccessor lightToModify;
 
+		[ConditionalHide("accessType", AccessType.AudioSource, "Accessor")]
+		public AudiosourceFloatAccessor audio;
+
 		[ConditionalHide("accessType", AccessType.RectTransform, "Accessor")]
 		public RectTransformFloatAccessor rectToModify;
 
@@ -37,15 +40,11 @@ namespace dninosores.UnityAccessors
 			Tooltip("Make a script that extends CustomFloatAccessor and reference it here")]
 		public CustomFloatAccessor customAccessor;
 
-		[ConditionalHide("accessType", AccessType.ImageColor, "Accessor")]
-		public ImageColorFloatAccessor imageToModify;
-
 		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
 		public ReflectedFloatAccessor reflectedAccessor;
 
 		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantFloatAccessor constant;
-
 
 		public override void Reset(GameObject o)
 		{
@@ -56,12 +55,12 @@ namespace dninosores.UnityAccessors
 			rectToModify = new RectTransformFloatAccessor();
 			rectToModify.Reset(o);
 			customAccessor = o.GetComponent<CustomFloatAccessor>();
-			imageToModify = new ImageColorFloatAccessor();
-			imageToModify.Reset(o);
 			reflectedAccessor = new ReflectedFloatAccessor();
 			reflectedAccessor.Reset(o);
 			constant = new ConstantFloatAccessor();
 			constant.Reset(o);
+			audio = new AudiosourceFloatAccessor();
+			audio.Reset(o);
 		}
 
 
@@ -76,14 +75,14 @@ namespace dninosores.UnityAccessors
 					return rectToModify.GetValue();
 				case AccessType.Light:
 					return lightToModify.GetValue();
-				case AccessType.ImageColor:
-					return imageToModify.GetValue();
 				case AccessType.Custom:
 					return customAccessor.GetValue();
 				case AccessType.Reflected:
 					return reflectedAccessor.GetValue();
 				case AccessType.Constant:
 					return constant.Value;
+				case AccessType.AudioSource:
+					return audio.Value;
 				default:
 					throw new NotImplementedException("No case for GetValue for accessType " + accessType + "!");
 			}
@@ -102,9 +101,6 @@ namespace dninosores.UnityAccessors
 				case AccessType.Light:
 					lightToModify.SetValue(value);
 					break;
-				case AccessType.ImageColor:
-					imageToModify.SetValue(value);
-					break;
 				case AccessType.Custom:
 					customAccessor.SetValue(value);
 					break;
@@ -114,9 +110,13 @@ namespace dninosores.UnityAccessors
 				case AccessType.Constant:
 					constant.Value = value;
 					break;
+				case AccessType.AudioSource:
+					audio.Value = value;
+					break;
 				default:
 					throw new NotImplementedException("No case for SetValue for accessType " + accessType + "!");
 			}
 		}
 	}
+
 }

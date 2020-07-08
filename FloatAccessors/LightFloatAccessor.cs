@@ -34,7 +34,7 @@ namespace dninosores.UnityAccessors
 				case ValueType.Range:
 					return light.range;
 				case ValueType.Color:
-					return ColorFloatAccessor.GetChannel(light.color, channel);
+					return ColorFloatUtil.GetChannel(light.color, channel);
 				case ValueType.SpotAngle:
 					return light.spotAngle;
 				case ValueType.Intensity:
@@ -59,7 +59,7 @@ namespace dninosores.UnityAccessors
 					light.range = value;
 					break;
 				case ValueType.Color:
-					light.color = ColorFloatAccessor.SetChannel(light.color, channel, value);
+					light.color = ColorFloatUtil.SetChannel(light.color, channel, value);
 					break;
 				case ValueType.SpotAngle:
 					light.spotAngle = value;

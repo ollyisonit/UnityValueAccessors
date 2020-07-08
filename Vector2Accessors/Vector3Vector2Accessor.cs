@@ -14,7 +14,7 @@ namespace dninosores.UnityAccessors
 		public override Vector2 GetValue()
 		{
 			Vector3 v3 = vector.GetValue();
-			return new Vector2(Vector3FloatAccessor.GetValue(xSource, v3), Vector3FloatAccessor.GetValue(ySource, v3));
+			return new Vector2(Vector3FloatUtil.GetValue(xSource, v3), Vector3FloatUtil.GetValue(ySource, v3));
 		}
 
 		public override void Reset(GameObject attachedObject)
@@ -29,8 +29,8 @@ namespace dninosores.UnityAccessors
 		public override void SetValue(Vector2 value)
 		{
 			Vector3 target = vector.Value;
-			Vector3FloatAccessor.SetValue(xSource, target, value.x);
-			Vector3FloatAccessor.SetValue(ySource, target, value.y);
+			Vector3FloatUtil.SetValue(xSource, target, value.x);
+			Vector3FloatUtil.SetValue(ySource, target, value.y);
 			vector.Value = target;
 		}
 	}

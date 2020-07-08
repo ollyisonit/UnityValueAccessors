@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
-	public static class Vector2FloatAccessor
+	public static class Vector2FloatUtil
 	{
 		public static float GetValue(Axis2D axis, Vector2 v)
 		{

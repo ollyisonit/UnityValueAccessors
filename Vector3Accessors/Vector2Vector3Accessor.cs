@@ -20,8 +20,8 @@ namespace dninosores.UnityAccessors
 		{
 			Vector3 outValue = new Vector3(fillConstant, fillConstant, fillConstant);
 			Vector2 orig = vector2.Value;
-			Vector3FloatAccessor.SetValue(xValueTo, outValue, orig.x);
-			Vector3FloatAccessor.SetValue(yValueTo, outValue, orig.y);
+			Vector3FloatUtil.SetValue(xValueTo, outValue, orig.x);
+			Vector3FloatUtil.SetValue(yValueTo, outValue, orig.y);
 			return outValue;
 		}
 
@@ -35,8 +35,8 @@ namespace dninosores.UnityAccessors
 
 		public override void SetValue(Vector3 value)
 		{
-			vector2.Value = new Vector2(Vector3FloatAccessor.GetValue(xValueTo, value),
-				Vector3FloatAccessor.GetValue(yValueTo, value));
+			vector2.Value = new Vector2(Vector3FloatUtil.GetValue(xValueTo, value),
+				Vector3FloatUtil.GetValue(yValueTo, value));
 		}
 	}
 }

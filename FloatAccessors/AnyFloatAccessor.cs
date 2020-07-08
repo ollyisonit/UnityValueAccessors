@@ -15,7 +15,14 @@ namespace dninosores.UnityAccessors
 			Transform,
 			RectTransform,
 			Light,
-			ImageColor,
+			AudioSource,
+
+			#region NESTED
+			Vector2,
+			Vector3,
+			Color,
+			#endregion
+
 			Custom,
 			Reflected,
 			Constant
@@ -29,6 +36,9 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide(new string[] { "accessType" }, new object[] { AccessType.Light })]
 		public LightFloatAccessor lightToModify;
 
+		[ConditionalHide("accessType", AccessType.AudioSource, "Accessor")]
+		public AudiosourceFloatAccessor audio;
+
 		[ConditionalHide("accessType", AccessType.RectTransform, "Accessor")]
 		public RectTransformFloatAccessor rectToModify;
 
@@ -36,15 +46,23 @@ namespace dninosores.UnityAccessors
 			Tooltip("Make a script that extends CustomFloatAccessor and reference it here")]
 		public CustomFloatAccessor customAccessor;
 
-		[ConditionalHide("accessType", AccessType.ImageColor, "Accessor")]
-		public ImageColorFloatAccessor imageToModify;
-
 		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
 		public ReflectedFloatAccessor reflectedAccessor;
 
 		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantFloatAccessor constant;
 
+
+		#region NESTED
+		[ConditionalHide("accessType", AccessType.Vector2, "Accessor")]
+		public Vector2FloatAccessor v2;
+
+		[ConditionalHide("accessType", AccessType.Vector3, "Accessor")]
+		public Vector3FloatAccessor v3;
+
+		[ConditionalHide("accessType", AccessType.Color, "Accessor")]
+		public ColorFloatAccessor color;
+		#endregion
 
 		public override void Reset(GameObject o)
 		{
@@ -55,12 +73,22 @@ namespace dninosores.UnityAccessors
 			rectToModify = new RectTransformFloatAccessor();
 			rectToModify.Reset(o);
 			customAccessor = o.GetComponent<CustomFloatAccessor>();
-			imageToModify = new ImageColorFloatAccessor();
-			imageToModify.Reset(o);
 			reflectedAccessor = new ReflectedFloatAccessor();
 			reflectedAccessor.Reset(o);
 			constant = new ConstantFloatAccessor();
 			constant.Reset(o);
+			audio = new AudiosourceFloatAccessor();
+			audio.Reset(o);
+
+
+			#region NESTED
+			v2 = new Vector2FloatAccessor();
+			v2.Reset(o);
+			v3 = new Vector3FloatAccessor();
+			v3.Reset(o);
+			color = new ColorFloatAccessor();
+			color.Reset(o);
+			#endregion
 		}
 
 
@@ -75,14 +103,24 @@ namespace dninosores.UnityAccessors
 					return rectToModify.GetValue();
 				case AccessType.Light:
 					return lightToModify.GetValue();
-				case AccessType.ImageColor:
-					return imageToModify.GetValue();
 				case AccessType.Custom:
 					return customAccessor.GetValue();
 				case AccessType.Reflected:
 					return reflectedAccessor.GetValue();
 				case AccessType.Constant:
 					return constant.Value;
+				case AccessType.AudioSource:
+					return audio.Value;
+
+				#region NESTED
+				case AccessType.Vector2:
+					return v2.Value;
+				case AccessType.Vector3:
+					return v3.Value;
+				case AccessType.Color:
+					return color.Value;
+				#endregion
+
 				default:
 					throw new NotImplementedException("No case for GetValue for accessType " + accessType + "!");
 			}
@@ -101,9 +139,6 @@ namespace dninosores.UnityAccessors
 				case AccessType.Light:
 					lightToModify.SetValue(value);
 					break;
-				case AccessType.ImageColor:
-					imageToModify.SetValue(value);
-					break;
 				case AccessType.Custom:
 					customAccessor.SetValue(value);
 					break;
@@ -113,6 +148,21 @@ namespace dninosores.UnityAccessors
 				case AccessType.Constant:
 					constant.Value = value;
 					break;
+				case AccessType.AudioSource:
+					audio.Value = value;
+					break;
+
+				#region NESTED
+				case AccessType.Vector2:
+					v2.Value = value;
+					break;
+				case AccessType.Vector3:
+					v3.Value = value;
+					break;
+				case AccessType.Color:
+					color.Value = value;
+					break;
+				#endregion
 				default:
 					throw new NotImplementedException("No case for SetValue for accessType " + accessType + "!");
 			}

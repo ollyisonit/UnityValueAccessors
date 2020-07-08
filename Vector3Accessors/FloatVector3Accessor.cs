@@ -68,7 +68,7 @@ namespace dninosores.UnityAccessors
 					z.Value = value.z;
 					break;
 				case AccessMode.Merged:
-					Float.Value = Vector3FloatAccessor.GetValue(sourceAxis, value);
+					Float.Value = Vector3FloatUtil.GetValue(sourceAxis, value);
 					break;
 				default:
 					throw new NotImplementedException("Case not found for " + accessMode);
