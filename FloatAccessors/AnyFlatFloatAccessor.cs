@@ -6,9 +6,10 @@ namespace dninosores.UnityAccessors
 {
 	/// <summary>
 	/// Value Accessor that merges functionality of all standard float accessors into a single class for serialization in the unity editor.
+	/// Excludes float accessors that involve nested references to other AnyFloatAccessors.
 	/// </summary>
 	[Serializable]
-	public class AnyFloatAccessor : Accessor<float>
+	public class AnyFlatFloatAccessor : Accessor<float>
 	{
 		public enum AccessType
 		{
@@ -32,7 +33,7 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.RectTransform, "Accessor")]
 		public RectTransformFloatAccessor rectToModify;
 
-		[ConditionalHide("accessType", AccessType.Custom, "Accessor"), 
+		[ConditionalHide("accessType", AccessType.Custom, "Accessor"),
 			Tooltip("Make a script that extends CustomFloatAccessor and reference it here")]
 		public CustomFloatAccessor customAccessor;
 

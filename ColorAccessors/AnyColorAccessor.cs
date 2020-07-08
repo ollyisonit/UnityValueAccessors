@@ -12,7 +12,8 @@ namespace dninosores.UnityAccessors
 			Image,
 			Light,
 			Custom,
-			Reflected
+			Reflected,
+			Constant
 		}
 
 		public AccessType accessType;
@@ -29,6 +30,9 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
 		public ReflectedColorAccessor reflected;
 
+		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
+		public ConstantColorAccessor constant;
+
 		public override Color GetValue()
 		{
 			switch (accessType)
@@ -41,6 +45,8 @@ namespace dninosores.UnityAccessors
 					return custom.GetValue();
 				case AccessType.Reflected:
 					return reflected.GetValue();
+				case AccessType.Constant:
+					return constant.GetValue();
 				default:
 					throw new NotImplementedException("Case not found for AccessType " + accessType);
 			}
@@ -62,6 +68,9 @@ namespace dninosores.UnityAccessors
 				case AccessType.Reflected:
 					 reflected.SetValue(value);
 					break;
+				case AccessType.Constant:
+					constant.Value = value;
+					break;
 				default:
 					throw new NotImplementedException("Case not found for AccessType " + accessType);
 			}
@@ -76,6 +85,8 @@ namespace dninosores.UnityAccessors
 			custom = attachedObject.GetComponent<CustomColorAccessor>();
 			reflected = new ReflectedColorAccessor();
 			reflected.Reset(attachedObject);
+			constant = new ConstantColorAccessor();
+			constant.Reset(attachedObject);
 		}
 	}
 }

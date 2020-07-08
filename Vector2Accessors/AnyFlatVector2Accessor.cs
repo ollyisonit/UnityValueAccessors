@@ -4,14 +4,15 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Wrapper for all Vector2Accessors that don't include nested references to AnyVector2Accessor.
+	/// </summary>
 	[Serializable]
-	public class AnyVector2Accessor : Accessor<Vector2>
+	public class AnyFlatVector2Accessor : Accessor<Vector2>
 	{
 		public enum AccessType
 		{
 			RectTransform,
-			Vector3,
-			Float,
 			Custom,
 			Reflected,
 			Constant
@@ -28,12 +29,6 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
 		public ReflectedVector2Accessor reflect;
 
-		[ConditionalHide("accessType", AccessType.Vector3, "Accessor")]
-		public Vector3Vector2Accessor vector3;
-
-		[ConditionalHide("accessType", AccessType.Float, "Accessor")]
-		public FloatVector2Accessor Float;
-
 		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantVector2Accessor constant;
 
@@ -49,10 +44,6 @@ namespace dninosores.UnityAccessors
 					return reflect.GetValue();
 				case AccessType.Constant:
 					return constant.Value;
-				case AccessType.Vector3:
-					return vector3.Value;
-				case AccessType.Float:
-					return Float.Value;
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);
 			}
@@ -66,13 +57,8 @@ namespace dninosores.UnityAccessors
 			cust = attachedObject.GetComponent<CustomVector2Accessor>();
 			reflect = new ReflectedVector2Accessor();
 			reflect.Reset(attachedObject);
-			vector3 = null;
 			constant = new ConstantVector2Accessor();
 			constant.Reset(attachedObject);
-			vector3 = new Vector3Vector2Accessor();
-			vector3.Reset(attachedObject);
-			Float = new FloatVector2Accessor();
-			Float.Reset(attachedObject);
 		}
 
 
@@ -91,12 +77,6 @@ namespace dninosores.UnityAccessors
 					break;
 				case AccessType.Constant:
 					constant.Value = value;
-					break;
-				case AccessType.Vector3:
-					vector3.Value = value;
-					break;
-				case AccessType.Float:
-					Float.Value = value;
 					break;
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);
