@@ -40,7 +40,9 @@ namespace dninosores.UnityAccessors
 
 		public override void Reset(GameObject attachedObject)
 		{
-			throw new NotImplementedException();
+			reflectedAccessor = new ReflectedBoolAccessor();
+			reflectedAccessor.Reset(attachedObject);
+			customAccessor =attachedObject.GetComponent<CustomBoolAccessor>();
 		}
 
 		public override void SetValue(bool value)

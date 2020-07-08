@@ -40,7 +40,9 @@ namespace dninosores.UnityAccessors
 
 		public override void Reset(GameObject attachedObject)
 		{
-			throw new NotImplementedException();
+			reflectedAccessor = new ReflectedStringAccessor();
+			reflectedAccessor.Reset(attachedObject);
+			customAccessor = attachedObject.GetComponent<CustomStringAccessor>();
 		}
 
 		public override void SetValue(string value)
