@@ -1,15 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	[Serializable]
 	public class ColorFloatAccessor : Accessor<float>
-	{
-		public AnyFlatColorAccessor color;
+	{	
 		public ColorChannel sourceChannel;
 		public bool setR;
 		public bool setG;
 		public bool setB;
 		public bool setA;
+		public AnyFlatColorAccessor color;
 
 		public override float GetValue()
 		{
