@@ -12,29 +12,35 @@ namespace dninosores.UnityAccessors
 			Image,
 			Light,
 			Custom,
-			Reflected,
 			Constant
 		}
 
+		public bool reflected;
+
+		[ConditionalHide("reflected", false)]
 		public AccessType accessType;
 
-		[ConditionalHide("accessType", AccessType.Image, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Image }, "Accessor")]
 		public ImageColorAccessor image;
 
-		[ConditionalHide("accessType", AccessType.Light, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Light }, "Accessor")]
 		public LightColorAccessor light;
 
-		[ConditionalHide("accessType", AccessType.Custom, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Custom }, "Accessor")]
 		public CustomColorAccessor custom;
 
-		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
-		public ReflectedColorAccessor reflected;
+		[ConditionalHide("reflected", true, "Accessor")]
+		public ReflectedColorAccessor reflectedAccess;
 
-		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Constant }, "Accessor")]
 		public ConstantColorAccessor constant;
 
 		public override Color GetValue()
 		{
+			if (reflected)
+			{
+				return reflectedAccess.Value;
+			}
 			switch (accessType)
 			{
 				case AccessType.Image:
@@ -43,8 +49,6 @@ namespace dninosores.UnityAccessors
 					return light.GetValue();
 				case AccessType.Custom:
 					return custom.GetValue();
-				case AccessType.Reflected:
-					return reflected.GetValue();
 				case AccessType.Constant:
 					return constant.GetValue();
 				default:
@@ -54,19 +58,22 @@ namespace dninosores.UnityAccessors
 
 		public override void SetValue(Color value)
 		{
+			if (reflected)
+			{
+				reflectedAccess.Value = value;
+				return;
+			}
+
 			switch (accessType)
 			{
 				case AccessType.Image:
 					image.SetValue(value);
 					break;
 				case AccessType.Light:
-					 light.SetValue(value);
+					light.SetValue(value);
 					break;
 				case AccessType.Custom:
-					 custom.SetValue(value);
-					break;
-				case AccessType.Reflected:
-					 reflected.SetValue(value);
+					custom.SetValue(value);
 					break;
 				case AccessType.Constant:
 					constant.Value = value;
@@ -83,8 +90,8 @@ namespace dninosores.UnityAccessors
 			light = new LightColorAccessor();
 			light.Reset(attachedObject);
 			custom = attachedObject.GetComponent<CustomColorAccessor>();
-			reflected = new ReflectedColorAccessor();
-			reflected.Reset(attachedObject);
+			reflectedAccess = new ReflectedColorAccessor();
+			reflectedAccess.Reset(attachedObject);
 			constant = new ConstantColorAccessor();
 			constant.Reset(attachedObject);
 		}

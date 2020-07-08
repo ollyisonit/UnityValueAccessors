@@ -13,37 +13,45 @@ namespace dninosores.UnityAccessors
 		public enum AccessType
 		{
 			RectTransform,
+			
 			Custom,
-			Reflected,
 			Constant
 		}
 
+		public bool reflected;
+
+		[ConditionalHide("reflected", false)]
 		public AccessType accessType;
 
-		[ConditionalHide("accessType", AccessType.RectTransform, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.RectTransform }, "Accessor")]
 		public RectTransformVector2Accessor rect;
 
-		[ConditionalHide("accessType", AccessType.Custom, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Custom }, "Accessor")]
 		public CustomVector2Accessor cust;
 
-		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
+		[ConditionalHide("reflected", true, "Accessor")]
 		public ReflectedVector2Accessor reflect;
 
-		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
+		
+
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Constant }, "Accessor")]
 		public ConstantVector2Accessor constant;
 
 		public override Vector2 GetValue()
 		{
+			if (reflected)
+			{
+				return reflect.Value;
+			}
 			switch (accessType)
 			{
 				case AccessType.RectTransform:
 					return rect.GetValue();
 				case AccessType.Custom:
 					return cust.GetValue();
-				case AccessType.Reflected:
-					return reflect.GetValue();
 				case AccessType.Constant:
 					return constant.Value;
+			
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);
 			}
@@ -64,6 +72,11 @@ namespace dninosores.UnityAccessors
 
 		public override void SetValue(Vector2 value)
 		{
+			if (reflected)
+			{
+				reflect.Value = value;
+				return;
+			}
 			switch (accessType)
 			{
 				case AccessType.RectTransform:
@@ -71,9 +84,6 @@ namespace dninosores.UnityAccessors
 					break;
 				case AccessType.Custom:
 					cust.SetValue(value);
-					break;
-				case AccessType.Reflected:
-					reflect.SetValue(value);
 					break;
 				case AccessType.Constant:
 					constant.Value = value;

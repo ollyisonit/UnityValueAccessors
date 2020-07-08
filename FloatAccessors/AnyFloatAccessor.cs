@@ -24,43 +24,44 @@ namespace dninosores.UnityAccessors
 			#endregion
 
 			Custom,
-			Reflected,
 			Constant
 		}
 
+		public bool reflected;
+		[ConditionalHide("reflected", false)]
 		public AccessType accessType;
 
-		[ConditionalHide("accessType", AccessType.Transform, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Transform }, "Accessor")]
 		public TransformFloatAccessor transformToModify;
 
-		[ConditionalHide(new string[] { "accessType" }, new object[] { AccessType.Light })]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Light }, "Accessor")]
 		public LightFloatAccessor lightToModify;
 
-		[ConditionalHide("accessType", AccessType.AudioSource, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.AudioSource }, "Accessor")]
 		public AudiosourceFloatAccessor audio;
 
-		[ConditionalHide("accessType", AccessType.RectTransform, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.RectTransform }, "Accessor")]
 		public RectTransformFloatAccessor rectToModify;
 
-		[ConditionalHide("accessType", AccessType.Custom, "Accessor"), 
-			Tooltip("Make a script that extends CustomFloatAccessor and reference it here")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Custom }, "Accessor"),
+		Tooltip("Make a script that extends CustomFloatAccessor and reference it here")]
 		public CustomFloatAccessor customAccessor;
 
-		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
+		[ConditionalHide("reflected", true, "Accessor")]
 		public ReflectedFloatAccessor reflectedAccessor;
 
-		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Constant }, "Accessor")]
 		public ConstantFloatAccessor constant;
 
 
 		#region NESTED
-		[ConditionalHide("accessType", AccessType.Vector2, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Vector2 }, "Accessor")]
 		public Vector2FloatAccessor v2;
 
-		[ConditionalHide("accessType", AccessType.Vector3, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Vector3 }, "Accessor")]
 		public Vector3FloatAccessor v3;
 
-		[ConditionalHide("accessType", AccessType.Color, "Accessor")]
+		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Color }, "Accessor")]
 		public ColorFloatAccessor color;
 		#endregion
 
@@ -95,6 +96,10 @@ namespace dninosores.UnityAccessors
 
 		public override float GetValue()
 		{
+			if (reflected)
+			{
+				return reflectedAccessor.Value;
+			}
 			switch (accessType)
 			{
 				case AccessType.Transform:
@@ -105,8 +110,6 @@ namespace dninosores.UnityAccessors
 					return lightToModify.GetValue();
 				case AccessType.Custom:
 					return customAccessor.GetValue();
-				case AccessType.Reflected:
-					return reflectedAccessor.GetValue();
 				case AccessType.Constant:
 					return constant.Value;
 				case AccessType.AudioSource:
@@ -128,6 +131,11 @@ namespace dninosores.UnityAccessors
 
 		public override void SetValue(float value)
 		{
+			if (reflected)
+			{
+				reflectedAccessor.Value = value;
+				return;
+			}
 			switch (accessType)
 			{
 				case AccessType.Transform:
@@ -141,9 +149,6 @@ namespace dninosores.UnityAccessors
 					break;
 				case AccessType.Custom:
 					customAccessor.SetValue(value);
-					break;
-				case AccessType.Reflected:
-					reflectedAccessor.SetValue(value);
 					break;
 				case AccessType.Constant:
 					constant.Value = value;
