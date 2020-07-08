@@ -2,10 +2,10 @@
 using System.Reflection;
 using UnityEngine;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	[Serializable]
-	public class ReflectedValueAccessor<T> : ValueAccessor<T>
+	public class ReflectedAccessor<T> : Accessor<T>
 	{
 		public UnityEngine.Object sourceObject;
 		public string field;

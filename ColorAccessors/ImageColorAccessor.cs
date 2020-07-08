@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	[Serializable]
-	public class ImageColorValueAccessor : ValueAccessor<Color>
+	public class ImageColorAccessor : Accessor<Color>
 	{
 		public Image image;
 

@@ -2,10 +2,10 @@
 using System;
 using UnityEngine;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	[Serializable]
-	public class TransformFloatValueAccessor : ValueAccessor<float>
+	public class TransformFloatAccessor : Accessor<float>
 	{
 		public enum TransformType
 		{

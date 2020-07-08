@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	[System.Serializable]
-	public class ImageColorFloatValueAccessor : ColorFloatValueAccessor
+	public class ImageColorFloatAccessor : ColorFloatAccessor
 	{
 		public Image image;
 

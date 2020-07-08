@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	[Serializable]
-	public class RectTransformVector2ValueAccessor : ValueAccessor<Vector2>
+	public class RectTransformVector2Accessor : Accessor<Vector2>
 	{
 		public enum ValueType
 		{

@@ -2,10 +2,10 @@
 using System;
 using UnityEngine;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	[Serializable]
-	public class LightFloatValueAccessor : ValueAccessor<float>
+	public class LightFloatAccessor : Accessor<float>
 	{
 		public Light light;
 		public ValueType valueType;

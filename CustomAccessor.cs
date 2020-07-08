@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
-	public abstract class CustomValueAccessor<T> : MonoBehaviour
+	public abstract class CustomAccessor<T> : MonoBehaviour
 	{
 		public abstract T GetValue();
 

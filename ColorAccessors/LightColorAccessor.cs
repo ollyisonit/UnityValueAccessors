@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	[Serializable]
-	public class LightColorValueAccessor : ValueAccessor<Color>
+	public class LightColorAccessor : Accessor<Color>
 	{
 		public Light light;
 

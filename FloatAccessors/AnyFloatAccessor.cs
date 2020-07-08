@@ -2,13 +2,13 @@
 using System;
 using UnityEngine;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	/// <summary>
 	/// Value Accessor that merges functionality of all standard float accessors into a single class for serialization in the unity editor.
 	/// </summary>
 	[Serializable]
-	public class AnyFloatValueAccessor : ValueAccessor<float>
+	public class AnyFloatAccessor : Accessor<float>
 	{
 		public enum AccessType
 		{
@@ -23,38 +23,38 @@ namespace dninosores.UnityValueAccessors
 		public AccessType accessType;
 
 		[ConditionalHide("accessType", AccessType.Transform, "Accessor")]
-		public TransformFloatValueAccessor transformToModify;
+		public TransformFloatAccessor transformToModify;
 
 		[ConditionalHide(new string[] { "accessType" }, new object[] { AccessType.Light })]
-		public LightFloatValueAccessor lightToModify;
+		public LightFloatAccessor lightToModify;
 
 		[ConditionalHide("accessType", AccessType.RectTransform, "Accessor")]
-		public RectTransformFloatValueAccessor rectToModify;
+		public RectTransformFloatAccessor rectToModify;
 
 		[ConditionalHide("accessType", AccessType.Custom, "Accessor"), 
-			Tooltip("Make a script that extends CustomFloatValueAccessor and reference it here")]
-		public CustomFloatValueAccessor customAccessor;
+			Tooltip("Make a script that extends CustomFloatAccessor and reference it here")]
+		public CustomFloatAccessor customAccessor;
 
 		[ConditionalHide("accessType", AccessType.ImageColor, "Accessor")]
-		public ImageColorFloatValueAccessor imageToModify;
+		public ImageColorFloatAccessor imageToModify;
 
 		//[Rename("Accessor"), ConditionalHide("accessType", AccessType.Reflected)]
 		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
-		public ReflectedFloatValueAccessor reflectedAccessor;
+		public ReflectedFloatAccessor reflectedAccessor;
 
 
 		public override void Reset(GameObject o)
 		{
-			transformToModify = new TransformFloatValueAccessor();
+			transformToModify = new TransformFloatAccessor();
 			transformToModify.Reset(o);
-			lightToModify = new LightFloatValueAccessor();
+			lightToModify = new LightFloatAccessor();
 			lightToModify.Reset(o);
-			rectToModify = new RectTransformFloatValueAccessor();
+			rectToModify = new RectTransformFloatAccessor();
 			rectToModify.Reset(o);
-			customAccessor = o.GetComponent<CustomFloatValueAccessor>();
-			imageToModify = new ImageColorFloatValueAccessor();
+			customAccessor = o.GetComponent<CustomFloatAccessor>();
+			imageToModify = new ImageColorFloatAccessor();
 			imageToModify.Reset(o);
-			reflectedAccessor = new ReflectedFloatValueAccessor();
+			reflectedAccessor = new ReflectedFloatAccessor();
 			reflectedAccessor.Reset(o);
 		}
 

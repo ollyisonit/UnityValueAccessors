@@ -2,10 +2,10 @@
 using System;
 using UnityEngine;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	[Serializable]
-	public class AnyVector2ValueAccessor : ValueAccessor<Vector2>
+	public class AnyVector2Accessor : Accessor<Vector2>
 	{
 		public enum AccessType
 		{
@@ -17,13 +17,13 @@ namespace dninosores.UnityValueAccessors
 		public AccessType accessType;
 
 		[ConditionalHide("accessType", AccessType.RectTransform, "Accessor")]
-		public RectTransformVector2ValueAccessor rect;
+		public RectTransformVector2Accessor rect;
 
 		[ConditionalHide("accessType", AccessType.Custom, "Accessor")]
-		public CustomVector2ValueAccessor cust;
+		public CustomVector2Accessor cust;
 
 		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
-		public ReflectedVector2ValueAccessor reflect;
+		public ReflectedVector2Accessor reflect;
 
 		public override Vector2 GetValue()
 		{
@@ -43,10 +43,10 @@ namespace dninosores.UnityValueAccessors
 
 		public override void Reset(GameObject attachedObject)
 		{
-			rect = new RectTransformVector2ValueAccessor();
+			rect = new RectTransformVector2Accessor();
 			rect.Reset(attachedObject);
-			cust = attachedObject.GetComponent<CustomVector2ValueAccessor>();
-			reflect = new ReflectedVector2ValueAccessor();
+			cust = attachedObject.GetComponent<CustomVector2Accessor>();
+			reflect = new ReflectedVector2Accessor();
 			reflect.Reset(attachedObject);
 		}
 

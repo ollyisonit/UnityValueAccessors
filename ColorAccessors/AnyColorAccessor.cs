@@ -2,10 +2,10 @@
 using System;
 using UnityEngine;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	[Serializable]
-	public class AnyColorValueAccessor : ValueAccessor<Color>
+	public class AnyColorAccessor : Accessor<Color>
 	{
 		public enum AccessType
 		{
@@ -18,16 +18,16 @@ namespace dninosores.UnityValueAccessors
 		public AccessType accessType;
 
 		[ConditionalHide("accessType", AccessType.Image, "Accessor")]
-		public ImageColorValueAccessor image;
+		public ImageColorAccessor image;
 
 		[ConditionalHide("accessType", AccessType.Light, "Accessor")]
-		public LightColorValueAccessor light;
+		public LightColorAccessor light;
 
 		[ConditionalHide("accessType", AccessType.Custom, "Accessor")]
-		public CustomColorValueAccessor custom;
+		public CustomColorAccessor custom;
 
 		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
-		public ReflectedColorValueAccessor reflected;
+		public ReflectedColorAccessor reflected;
 
 		public override Color GetValue()
 		{
@@ -69,12 +69,12 @@ namespace dninosores.UnityValueAccessors
 
 		public override void Reset(GameObject attachedObject)
 		{
-			image = new ImageColorValueAccessor();
+			image = new ImageColorAccessor();
 			image.Reset(attachedObject);
-			light = new LightColorValueAccessor();
+			light = new LightColorAccessor();
 			light.Reset(attachedObject);
-			custom = attachedObject.GetComponent<CustomColorValueAccessor>();
-			reflected = new ReflectedColorValueAccessor();
+			custom = attachedObject.GetComponent<CustomColorAccessor>();
+			reflected = new ReflectedColorAccessor();
 			reflected.Reset(attachedObject);
 		}
 	}

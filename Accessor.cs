@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	[Serializable]
-	public abstract class ValueAccessor<T>
+	public abstract class Accessor<T>
 	{
 		public abstract T GetValue();
 

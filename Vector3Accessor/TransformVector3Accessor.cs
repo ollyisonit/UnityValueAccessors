@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	[Serializable]
-	public class TransformVector3ValueAccessor : ValueAccessor<Vector3>
+	public class TransformVector3Accessor : Accessor<Vector3>
 	{
 		public enum TransformType
 		{

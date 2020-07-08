@@ -1,4 +1,4 @@
-﻿namespace dninosores.UnityValueAccessors
+﻿namespace dninosores.UnityAccessors
 {
 	public enum Axis3D
 	{

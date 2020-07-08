@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityValueAccessors
+namespace dninosores.UnityAccessors
 {
 	[Serializable]
-	public class RectTransformFloatValueAccessor : ValueAccessor<float>
+	public class RectTransformFloatAccessor : Accessor<float>
 	{
 		public RectTransform rectTransform;
 		public ValueType valueType;
