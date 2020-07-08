@@ -6,9 +6,9 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class Vector3Vector2Accessor : Accessor<Vector2>
 	{
-		public AnyFlatVector3Accessor vector;
 		public Axis3D xSource;
 		public Axis3D ySource;
+		public AnyFlatVector3Accessor vector;
 
 
 		public override Vector2 GetValue()
@@ -21,6 +21,7 @@ namespace dninosores.UnityAccessors
 		{
 			xSource = Axis3D.X;
 			ySource = Axis3D.Y;
+			vector = new AnyFlatVector3Accessor();
 			vector.Reset(attachedObject);
 		}
 

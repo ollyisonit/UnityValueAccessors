@@ -7,11 +7,13 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class Vector2Vector3Accessor : Accessor<Vector3>
 	{
-		public AnyFlatVector2Accessor vector2;
 
 		public Axis3D xValueTo;
 		public Axis3D yValueTo;
 		public float fillConstant;
+
+		public AnyFlatVector2Accessor vector2;
+
 
 
 		public override Vector3 GetValue()
