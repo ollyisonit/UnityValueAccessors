@@ -13,36 +13,28 @@ namespace dninosores.UnityAccessors
 		public enum AccessType
 		{
 			RectTransform,
-			
+			Reflected,
 			Custom,
 			Constant
 		}
 
-		public bool reflected;
 
-		[ConditionalHide("reflected", false)]
 		public AccessType accessType;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.RectTransform }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.RectTransform, "Accessor")]
 		public RectTransformVector2Accessor rect;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Custom }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Custom, "Accessor")]
 		public CustomVector2Accessor cust;
 
-		[ConditionalHide("reflected", true, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
 		public ReflectedVector2Accessor reflect;
 
-		
-
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Constant }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantVector2Accessor constant;
 
 		public override Vector2 GetValue()
 		{
-			if (reflected)
-			{
-				return reflect.Value;
-			}
 			switch (accessType)
 			{
 				case AccessType.RectTransform:
@@ -51,7 +43,8 @@ namespace dninosores.UnityAccessors
 					return cust.GetValue();
 				case AccessType.Constant:
 					return constant.Value;
-			
+				case AccessType.Reflected:
+					return reflect.Value;
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);
 			}
@@ -72,11 +65,6 @@ namespace dninosores.UnityAccessors
 
 		public override void SetValue(Vector2 value)
 		{
-			if (reflected)
-			{
-				reflect.Value = value;
-				return;
-			}
 			switch (accessType)
 			{
 				case AccessType.RectTransform:
@@ -87,6 +75,9 @@ namespace dninosores.UnityAccessors
 					break;
 				case AccessType.Constant:
 					constant.Value = value;
+					break;
+				case AccessType.Reflected:
+					reflect.Value = value;
 					break;
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);

@@ -18,39 +18,34 @@ namespace dninosores.UnityAccessors
 			Light,
 			AudioSource,
 
-
-
+			Reflected,
 			Custom,
 			Constant
 		}
 
-		public bool reflected;
-		[ConditionalHide("reflected", false)]
 		public AccessType accessType;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Transform }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Transform, "Accessor")]
 		public TransformFloatAccessor transformToModify;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Light }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Light, "Accessor")]
 		public LightFloatAccessor lightToModify;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.AudioSource }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.AudioSource, "Accessor")]
 		public AudiosourceFloatAccessor audio;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.RectTransform }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.RectTransform, "Accessor")]
 		public RectTransformFloatAccessor rectToModify;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Custom }, "Accessor"),
+		[ConditionalHide("accessType", AccessType.Custom, "Accessor"),
 		Tooltip("Make a script that extends CustomFloatAccessor and reference it here")]
 		public CustomFloatAccessor customAccessor;
 
-		[ConditionalHide("reflected", true, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
 		public ReflectedFloatAccessor reflectedAccessor;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Constant }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantFloatAccessor constant;
-
-
 
 
 		public override void Reset(GameObject o)
@@ -68,19 +63,12 @@ namespace dninosores.UnityAccessors
 			constant.Reset(o);
 			audio = new AudiosourceFloatAccessor();
 			audio.Reset(o);
-
-
-
 		}
 
 
 
 		public override float GetValue()
 		{
-			if (reflected)
-			{
-				return reflectedAccessor.Value;
-			}
 			switch (accessType)
 			{
 				case AccessType.Transform:
@@ -96,7 +84,8 @@ namespace dninosores.UnityAccessors
 				case AccessType.AudioSource:
 					return audio.Value;
 
-
+				case AccessType.Reflected:
+					return reflectedAccessor.Value;
 
 				default:
 					throw new NotImplementedException("No case for GetValue for accessType " + accessType + "!");
@@ -105,11 +94,6 @@ namespace dninosores.UnityAccessors
 
 		public override void SetValue(float value)
 		{
-			if (reflected)
-			{
-				reflectedAccessor.Value = value;
-				return;
-			}
 			switch (accessType)
 			{
 				case AccessType.Transform:
@@ -130,8 +114,9 @@ namespace dninosores.UnityAccessors
 				case AccessType.AudioSource:
 					audio.Value = value;
 					break;
-
-
+				case AccessType.Reflected:
+					reflectedAccessor.Value = value;
+					break;
 				default:
 					throw new NotImplementedException("No case for SetValue for accessType " + accessType + "!");
 			}

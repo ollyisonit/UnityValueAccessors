@@ -7,32 +7,34 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class AnyStringAccessor : Accessor<string>
 	{
-		public bool reflected;
 		public enum ValueType
 		{
-			Custom
+			Reflected,
+			Custom,
+			Constant
 		}
 
-		[ConditionalHide("reflected", true, "Accessor")]
-		public ReflectedStringAccessor reflectedAccessor;
-
-		[ConditionalHide("reflected", false)]
 		public ValueType valueType;
 
-		[ConditionalHide(new string[] { "reflected", "valueType" }, new object[] { false, ValueType.Custom }, "Accessor")]
+		[ConditionalHide("valueType", ValueType.Custom, "Accessor")]
 		public CustomStringAccessor customAccessor;
+
+		[ConditionalHide("valueType", ValueType.Reflected, "Accessor")]
+		public ReflectedStringAccessor reflectedAccessor;
+
+		[ConditionalHide("valueType", ValueType.Constant, "Accessor")]
+		public ConstantStringAccessor constant;
 
 		public override string GetValue()
 		{
-			if (reflected)
-			{
-				return reflectedAccessor.GetValue();
-			}
-
 			switch (valueType)
 			{
 				case ValueType.Custom:
 					return customAccessor.GetValue();
+				case ValueType.Reflected:
+					return reflectedAccessor.Value;
+				case ValueType.Constant:
+					return constant.Value;
 				default:
 					throw new NotImplementedException("Case not found for " + valueType);
 			}
@@ -43,20 +45,22 @@ namespace dninosores.UnityAccessors
 			reflectedAccessor = new ReflectedStringAccessor();
 			reflectedAccessor.Reset(attachedObject);
 			customAccessor = attachedObject.GetComponent<CustomStringAccessor>();
+			constant = new ConstantStringAccessor();
+			constant.Reset(attachedObject);
 		}
 
 		public override void SetValue(string value)
 		{
-			if (reflected)
-			{
-				reflectedAccessor.Value = value;
-				return;
-			}
-
 			switch (valueType)
 			{
 				case ValueType.Custom:
 					customAccessor.SetValue(value);
+					break;
+				case ValueType.Reflected:
+					reflectedAccessor.SetValue(value);
+					break;
+				case ValueType.Constant:
+					constant.SetValue(value);
 					break;
 				default:
 					throw new NotImplementedException("Case not found for " + valueType);

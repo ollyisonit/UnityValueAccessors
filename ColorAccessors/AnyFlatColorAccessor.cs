@@ -11,36 +11,30 @@ namespace dninosores.UnityAccessors
 		{
 			Image,
 			Light,
+			Reflected,
 			Custom,
 			Constant
 		}
 
-		public bool reflected;
-
-		[ConditionalHide("reflected", false)]
 		public AccessType accessType;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Image }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Image, "Accessor")]
 		public ImageColorAccessor image;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Light }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Light, "Accessor")]
 		public LightColorAccessor light;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Custom }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Custom, "Accessor")]
 		public CustomColorAccessor custom;
 
-		[ConditionalHide("reflected", true, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
 		public ReflectedColorAccessor reflectedAccess;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Constant }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantColorAccessor constant;
 
 		public override Color GetValue()
 		{
-			if (reflected)
-			{
-				return reflectedAccess.Value;
-			}
 			switch (accessType)
 			{
 				case AccessType.Image:
@@ -51,6 +45,8 @@ namespace dninosores.UnityAccessors
 					return custom.GetValue();
 				case AccessType.Constant:
 					return constant.GetValue();
+				case AccessType.Reflected:
+					return reflectedAccess.GetValue();
 				default:
 					throw new NotImplementedException("Case not found for AccessType " + accessType);
 			}
@@ -58,12 +54,6 @@ namespace dninosores.UnityAccessors
 
 		public override void SetValue(Color value)
 		{
-			if (reflected)
-			{
-				reflectedAccess.Value = value;
-				return;
-			}
-
 			switch (accessType)
 			{
 				case AccessType.Image:
@@ -77,6 +67,9 @@ namespace dninosores.UnityAccessors
 					break;
 				case AccessType.Constant:
 					constant.Value = value;
+					break;
+				case AccessType.Reflected:
+					reflectedAccess.Value = value;
 					break;
 				default:
 					throw new NotImplementedException("Case not found for AccessType " + accessType);
