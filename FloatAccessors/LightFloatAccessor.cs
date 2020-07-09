@@ -11,13 +11,13 @@ namespace dninosores.UnityAccessors
 		public ValueType valueType;
 		public enum ValueType
 		{
-			Intensity,
-			Range,
-			Color,
-			SpotAngle,
-			InnerSpotAngle,
-			BounceIntensity,
-			ColorTemperature
+			Intensity = 0,
+			Range = 1,
+			Color = 2,
+			SpotAngle = 3,
+			InnerSpotAngle = 4,
+			BounceIntensity = 6,
+			ColorTemperature = 5
 		}
 
 

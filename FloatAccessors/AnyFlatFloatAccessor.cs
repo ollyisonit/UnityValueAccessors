@@ -13,14 +13,14 @@ namespace dninosores.UnityAccessors
 	{
 		public enum AccessType
 		{
-			Transform,
-			RectTransform,
-			Light,
-			AudioSource,
+			Transform = 0,
+			RectTransform = 1,
+			Light = 2,
+			AudioSource = 3,
 
-			Reflected,
-			Custom,
-			Constant
+			Reflected = 4,
+			Custom = 5,
+			Constant = 6
 		}
 
 		public AccessType accessType;

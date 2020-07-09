@@ -2,9 +2,9 @@
 {
 	public enum ColorChannel
 	{
-		A,
-		R, 
-		G, 
-		B
+		A = 0,
+		R = 1, 
+		G = 2, 
+		B = 3
 	}
 }

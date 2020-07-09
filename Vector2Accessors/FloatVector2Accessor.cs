@@ -9,8 +9,8 @@ namespace dninosores.UnityAccessors
 	{
 		public enum AccessMode
 		{
-			Split,
-			Merged
+			Split = 0,
+			Merged = 1
 		}
 
 		public AccessMode accessMode;

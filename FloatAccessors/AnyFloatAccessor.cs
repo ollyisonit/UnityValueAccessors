@@ -12,20 +12,20 @@ namespace dninosores.UnityAccessors
 	{
 		public enum AccessType
 		{
-			Transform,
-			RectTransform,
-			Light,
-			AudioSource,
+			Transform = 0,
+			RectTransform = 1,
+			Light = 2,
+			AudioSource = 3,
 
 			#region NESTED
-			Vector2,
-			Vector3,
-			Color,
+			Vector2 = 4,
+			Vector3 = 5,
+			Color = 6,
 			#endregion
 
-			Reflected,
-			Custom,
-			Constant
+			Reflected = 7,
+			Custom = 8,
+			Constant = 9
 		}
 
 		public AccessType accessType;

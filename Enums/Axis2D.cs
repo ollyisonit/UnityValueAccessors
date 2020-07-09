@@ -2,7 +2,7 @@
 {
 	public enum Axis2D
 	{
-		X,
-		Y
+		X = 0,
+		Y = 1
 	}
 }

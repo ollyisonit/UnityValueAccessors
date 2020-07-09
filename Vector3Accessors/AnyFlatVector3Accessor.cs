@@ -12,10 +12,10 @@ namespace dninosores.UnityAccessors
 	{
 		public enum AccessType
 		{
-			Transform,
-			Reflected,
-			Custom,
-			Constant
+			Transform = 0,
+			Reflected = 1,
+			Custom = 2,
+			Constant = 3
 		}
 
 		public AccessType accessType;

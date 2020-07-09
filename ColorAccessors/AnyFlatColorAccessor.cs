@@ -9,11 +9,11 @@ namespace dninosores.UnityAccessors
 	{
 		public enum AccessType
 		{
-			Image,
-			Light,
-			Reflected,
-			Custom,
-			Constant
+			Image = 0,
+			Light = 1,
+			Reflected = 2,
+			Custom = 3,
+			Constant = 4
 		}
 
 		public AccessType accessType;

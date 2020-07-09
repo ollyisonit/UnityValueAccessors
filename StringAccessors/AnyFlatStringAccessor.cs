@@ -9,9 +9,9 @@ namespace dninosores.UnityAccessors
 	{
 		public enum ValueType
 		{
-			Reflected,
-			Custom,
-			Constant
+			Reflected = 0,
+			Custom = 1,
+			Constant = 2
 		}
 
 		public ValueType valueType;

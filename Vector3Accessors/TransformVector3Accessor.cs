@@ -8,11 +8,11 @@ namespace dninosores.UnityAccessors
 	{
 		public enum TransformType
 		{
-			Position,
-			LocalPosition,
-			Rotation,
-			LocalRotation,
-			LocalScale,
+			Position = 0,
+			LocalPosition = 1,
+			Rotation = 2,
+			LocalRotation = 3,
+			LocalScale = 4,
 		}
 
 		public Transform transform;

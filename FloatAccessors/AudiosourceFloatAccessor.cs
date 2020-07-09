@@ -9,12 +9,12 @@ namespace dninosores.UnityAccessors
 		public AudioSource source;
 		public enum ValueType
 		{
-			Volume,
-			Pitch,
-			MinDistance,
-			MaxDistance,
-			PanStereo,
-			SpatialBlend,
+			Volume = 0,
+			Pitch = 1,
+			MinDistance = 2,
+			MaxDistance = 3,
+			PanStereo = 4,
+			SpatialBlend = 5,
 		}
 
 		public ValueType valueType;

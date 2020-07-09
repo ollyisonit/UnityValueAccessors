@@ -12,13 +12,13 @@ namespace dninosores.UnityAccessors
 
 		public enum ValueType
 		{
-			anchoredPosition,
-			anchorMax,
-			anchorMin,
-			offsetMax,
-			offsetMin,
-			pivot,
-			sizeDelta
+			anchoredPosition = 0,
+			anchorMax = 1,
+			anchorMin = 2,
+			offsetMax = 3,
+			offsetMin = 4,
+			pivot = 5,
+			sizeDelta = 6
 		}
 
 

@@ -9,14 +9,14 @@ namespace dninosores.UnityAccessors
 	{
 		public enum AccessType
 		{
-			RectTransform,
+			RectTransform = 0,
 			#region NESTED
-			Vector3,
-			Float,
+			Vector3 = 1,
+			Float = 2,
 			#endregion
-			Reflected,
-			Custom,
-			Constant
+			Reflected = 3,
+			Custom = 4,
+			Constant = 5
 		}
 
 
