@@ -5,7 +5,7 @@ using UnityEngine;
 namespace dninosores.UnityAccessors
 {
 	/// <summary>
-	/// Value Accessor that merges functionality of all standard float accessors into a single class for serialization in the unity editor.
+	/// Front-facing Value Accessor that merges functionality of all standard float accessors into a single class for serialization in the unity editor.
 	/// </summary>
 	[Serializable]
 	public class AnyFloatAccessor : Accessor<float>
