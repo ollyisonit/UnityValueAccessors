@@ -9,8 +9,8 @@ namespace dninosores.UnityAccessors
     /// each implementation of AnyOrConstantAccessor you must copy this class and change the type for the 
     /// CustomPropertyDrawer attribute.
     /// </summary>
-	[CustomPropertyDrawer(typeof(ColorOrConstantAccessor))]
-	public class ColorOrConstantDrawer : PropertyDrawer
+	[CustomPropertyDrawer(typeof(AnyOrConstantAccessor<>), true)]
+	public class AnyOrConstantDrawer : PropertyDrawer
 	{
         private const float BOOL_SPACING = 0f;
         private const float BOOL_PADDING = 2f;

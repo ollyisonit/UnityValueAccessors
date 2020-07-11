@@ -31,9 +31,16 @@ namespace dninosores.UnityAccessors
 
 				if (isAccessor)
 				{
+
 					object fieldObject = field.GetValue(source);
-					MethodInfo resetMethod = fieldObject.GetType().GetMethod("Reset");
+					if (fieldObject == null)
+					{
+						fieldObject = Activator.CreateInstance(field.FieldType);
+						field.SetValue(source, fieldObject);
+					}
+					MethodInfo resetMethod = fieldObject.GetType().GetMethod("Reset", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 					resetMethod.Invoke(fieldObject, new object[] { attached });
+
 				}
 			}
 		}
