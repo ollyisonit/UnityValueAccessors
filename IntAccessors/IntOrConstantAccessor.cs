@@ -10,10 +10,10 @@ namespace dninosores.UnityAccessors
 	/// constant and accessed values.
 	/// </summary>
 	[Serializable]
-	public class StringOrConstantAccessor : AnyOrConstantAccessor<string>
+	public class IntOrConstantAccessor : AnyOrConstantAccessor<int>
 	{
-		public AnyStringAccessor accessorValue;
+		public AnyIntAccessor accessorValue;
 
-		public override Accessor<string> AccessorValue => accessorValue;
+		public override Accessor<int> AccessorValue => accessorValue;
 	}
 }

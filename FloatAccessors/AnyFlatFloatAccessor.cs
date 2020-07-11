@@ -18,9 +18,12 @@ namespace dninosores.UnityAccessors
 			Light = 2,
 			AudioSource = 3,
 
-			Reflected = 4,
-			Custom = 5,
-			Constant = 6
+	
+
+			Reflected = 7,
+			Custom = 8,
+			Constant = 9,
+			Random = 10
 		}
 
 		public AccessType accessType;
@@ -47,23 +50,9 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantFloatAccessor constant;
 
+		[ConditionalHide("accessType", AccessType.Random, "Accessor")]
+		public RandomFloatAccessor random;
 
-		public override void Reset(GameObject o)
-		{
-			transformToModify = new TransformFloatAccessor();
-			transformToModify.Reset(o);
-			lightToModify = new LightFloatAccessor();
-			lightToModify.Reset(o);
-			rectToModify = new RectTransformFloatAccessor();
-			rectToModify.Reset(o);
-			customAccessor = o.GetComponent<CustomFloatAccessor>();
-			reflectedAccessor = new ReflectedFloatAccessor();
-			reflectedAccessor.Reset(o);
-			constant = new ConstantFloatAccessor();
-			constant.Reset(o);
-			audio = new AudiosourceFloatAccessor();
-			audio.Reset(o);
-		}
 
 
 
@@ -83,6 +72,9 @@ namespace dninosores.UnityAccessors
 					return constant.Value;
 				case AccessType.AudioSource:
 					return audio.Value;
+				case AccessType.Random:
+					return random.Value;
+
 
 				case AccessType.Reflected:
 					return reflectedAccessor.Value;
@@ -114,6 +106,10 @@ namespace dninosores.UnityAccessors
 				case AccessType.AudioSource:
 					audio.Value = value;
 					break;
+				case AccessType.Random:
+					random.Value = value;
+					break;
+
 				case AccessType.Reflected:
 					reflectedAccessor.Value = value;
 					break;

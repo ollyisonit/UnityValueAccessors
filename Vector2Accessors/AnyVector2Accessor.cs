@@ -16,7 +16,8 @@ namespace dninosores.UnityAccessors
 			#endregion
 			Reflected = 3,
 			Custom = 4,
-			Constant = 5
+			Constant = 5,
+			Random = 6
 		}
 
 
@@ -42,6 +43,9 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantVector2Accessor constant;
 
+		[ConditionalHide("accessType", AccessType.Random, "Accessor")]
+		public RandomVector2Accessor random;
+
 		public override Vector2 GetValue()
 		{
 			switch (accessType)
@@ -54,6 +58,8 @@ namespace dninosores.UnityAccessors
 					return constant.Value;
 				case AccessType.Reflected:
 					return reflect.Value;
+				case AccessType.Random:
+					return random.Value;
 				#region NESTED
 				case AccessType.Vector3:
 					return vector3.Value;
@@ -63,24 +69,6 @@ namespace dninosores.UnityAccessors
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);
 			}
-		}
-
-
-		public override void Reset(GameObject attachedObject)
-		{
-			rect = new RectTransformVector2Accessor();
-			rect.Reset(attachedObject);
-			cust = attachedObject.GetComponent<CustomVector2Accessor>();
-			reflect = new ReflectedVector2Accessor();
-			reflect.Reset(attachedObject);
-			constant = new ConstantVector2Accessor();
-			constant.Reset(attachedObject);
-			#region NESTED
-			vector3 = new Vector3Vector2Accessor();
-			vector3.Reset(attachedObject);
-			Float = new FloatVector2Accessor();
-			Float.Reset(attachedObject);
-			#endregion
 		}
 
 
@@ -99,6 +87,9 @@ namespace dninosores.UnityAccessors
 					break;
 				case AccessType.Reflected:
 					reflect.Value = value;
+					break;
+				case AccessType.Random:
+					random.Value = value;
 					break;
 				#region NESTED
 				case AccessType.Vector3:

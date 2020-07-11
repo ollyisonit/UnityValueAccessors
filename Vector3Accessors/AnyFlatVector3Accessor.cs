@@ -13,9 +13,11 @@ namespace dninosores.UnityAccessors
 		public enum AccessType
 		{
 			Transform = 0,
-			Reflected = 1,
-			Custom = 2,
-			Constant = 3
+			Reflected = 3,
+			Custom = 4,
+			Constant = 5,
+			Random = 6
+
 		}
 
 		public AccessType accessType;
@@ -29,8 +31,12 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.Reflected, "Accessor")]
 		public ReflectedVector3Accessor reflectedAccess;
 
+
 		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantVector3Accessor constant;
+
+		[ConditionalHide("accessType", AccessType.Random, "Accessor")]
+		public RandomVector3Accessor random;
 
 		public override Vector3 GetValue()
 		{
@@ -40,27 +46,18 @@ namespace dninosores.UnityAccessors
 					return trans.GetValue();
 				case AccessType.Custom:
 					return custom.GetValue();
-				
+
 				case AccessType.Constant:
 					return constant.GetValue();
 				case AccessType.Reflected:
-					return reflectedAccess.Value;
+					return reflectedAccess.GetValue();
+				case AccessType.Random:
+					return random.GetValue();
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);
 			}
 		}
 
-		public override void Reset(GameObject attachedObject)
-		{
-			trans = new TransformVector3Accessor();
-			trans.Reset(attachedObject);
-			custom = attachedObject.GetComponent<CustomVector3Accessor>();
-			reflectedAccess = new ReflectedVector3Accessor();
-			reflectedAccess.Reset(attachedObject);
-			constant = new ConstantVector3Accessor();
-			constant.Reset(attachedObject);
-			
-		}
 
 		public override void SetValue(Vector3 value)
 		{
@@ -72,11 +69,15 @@ namespace dninosores.UnityAccessors
 				case AccessType.Custom:
 					custom.SetValue(value);
 					break;
+
 				case AccessType.Constant:
 					constant.SetValue(value);
 					break;
 				case AccessType.Reflected:
 					reflectedAccess.SetValue(value);
+					break;
+				case AccessType.Random:
+					random.SetValue(value);
 					break;
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);

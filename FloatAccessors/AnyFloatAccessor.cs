@@ -25,7 +25,8 @@ namespace dninosores.UnityAccessors
 
 			Reflected = 7,
 			Custom = 8,
-			Constant = 9
+			Constant = 9,
+			Random = 10
 		}
 
 		public AccessType accessType;
@@ -52,6 +53,9 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantFloatAccessor constant;
 
+		[ConditionalHide("accessType", AccessType.Random, "Accessor")]
+		public RandomFloatAccessor random;
+
 
 		#region NESTED
 
@@ -65,33 +69,6 @@ namespace dninosores.UnityAccessors
 		public ColorFloatAccessor color;
 
 		#endregion
-
-		public override void Reset(GameObject o)
-		{
-			transformToModify = new TransformFloatAccessor();
-			transformToModify.Reset(o);
-			lightToModify = new LightFloatAccessor();
-			lightToModify.Reset(o);
-			rectToModify = new RectTransformFloatAccessor();
-			rectToModify.Reset(o);
-			customAccessor = o.GetComponent<CustomFloatAccessor>();
-			reflectedAccessor = new ReflectedFloatAccessor();
-			reflectedAccessor.Reset(o);
-			constant = new ConstantFloatAccessor();
-			constant.Reset(o);
-			audio = new AudiosourceFloatAccessor();
-			audio.Reset(o);
-
-
-			#region NESTED
-			v2 = new Vector2FloatAccessor();
-			v2.Reset(o);
-			v3 = new Vector3FloatAccessor();
-			v3.Reset(o);
-			color = new ColorFloatAccessor();
-			color.Reset(o);
-			#endregion
-		}
 
 
 
@@ -111,6 +88,8 @@ namespace dninosores.UnityAccessors
 					return constant.Value;
 				case AccessType.AudioSource:
 					return audio.Value;
+				case AccessType.Random:
+					return random.Value;
 
 				#region NESTED
 				case AccessType.Vector2:
@@ -150,6 +129,9 @@ namespace dninosores.UnityAccessors
 					break;
 				case AccessType.AudioSource:
 					audio.Value = value;
+					break;
+				case AccessType.Random:
+					random.Value = value;
 					break;
 
 				#region NESTED

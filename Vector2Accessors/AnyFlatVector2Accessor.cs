@@ -13,9 +13,10 @@ namespace dninosores.UnityAccessors
 		public enum AccessType
 		{
 			RectTransform = 0,
-			Reflected = 1,
-			Custom = 2,
-			Constant = 3
+			Reflected = 3,
+			Custom = 4,
+			Constant = 5,
+			Random = 6
 		}
 
 
@@ -33,6 +34,9 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantVector2Accessor constant;
 
+		[ConditionalHide("accessType", AccessType.Random, "Accessor")]
+		public RandomVector2Accessor random;
+
 		public override Vector2 GetValue()
 		{
 			switch (accessType)
@@ -45,21 +49,11 @@ namespace dninosores.UnityAccessors
 					return constant.Value;
 				case AccessType.Reflected:
 					return reflect.Value;
+				case AccessType.Random:
+					return random.Value;
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);
 			}
-		}
-
-
-		public override void Reset(GameObject attachedObject)
-		{
-			rect = new RectTransformVector2Accessor();
-			rect.Reset(attachedObject);
-			cust = attachedObject.GetComponent<CustomVector2Accessor>();
-			reflect = new ReflectedVector2Accessor();
-			reflect.Reset(attachedObject);
-			constant = new ConstantVector2Accessor();
-			constant.Reset(attachedObject);
 		}
 
 
@@ -78,6 +72,9 @@ namespace dninosores.UnityAccessors
 					break;
 				case AccessType.Reflected:
 					reflect.Value = value;
+					break;
+				case AccessType.Random:
+					random.Value = value;
 					break;
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);
