@@ -54,6 +54,7 @@ namespace dninosores.UnityAccessors
 
 
 		#region NESTED
+
 		[ConditionalHide("accessType", AccessType.Vector2, "Accessor")]
 		public Vector2FloatAccessor v2;
 
@@ -62,6 +63,7 @@ namespace dninosores.UnityAccessors
 
 		[ConditionalHide("accessType", AccessType.Color, "Accessor")]
 		public ColorFloatAccessor color;
+
 		#endregion
 
 		public override void Reset(GameObject o)

@@ -32,10 +32,10 @@ namespace dninosores.UnityAccessors
 		public ReflectedVector2Accessor reflect;
 
 		#region NESTED
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Vector3 }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Vector3, "Accessor")]
 		public Vector3Vector2Accessor vector3;
 
-		[ConditionalHide(new string[] { "reflected", "accessType" }, new object[] { false, AccessType.Float }, "Accessor")]
+		[ConditionalHide("accessType", AccessType.Float, "Accessor")]
 		public FloatVector2Accessor Float;
 		#endregion
 
