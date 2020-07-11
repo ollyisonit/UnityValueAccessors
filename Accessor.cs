@@ -23,6 +23,9 @@ namespace dninosores.UnityAccessors
 
 		public abstract void SetValue(T value);
 
-		public abstract void Reset(GameObject attachedObject);
+		public virtual void Reset(GameObject attachedObject)
+		{
+			ResetAccessors.Reset(this, attachedObject);
+		}
 	}
 }
