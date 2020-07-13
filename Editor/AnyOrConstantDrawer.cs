@@ -55,7 +55,7 @@ namespace dninosores.UnityAccessors
             {
                 rect.x += ACCESSOR_SPACING;
                 rect.width -= ACCESSOR_SPACING;
-                EditorGUI.PropertyField(rect, accessorValue, new GUIContent(property.displayName + " (" + constantValue.type + ")"), true);
+                EditorGUI.PropertyField(rect, accessorValue, new GUIContent(property.displayName + " (" + constantValue.type + " Accessor)"), true);
             }
         }
     }
