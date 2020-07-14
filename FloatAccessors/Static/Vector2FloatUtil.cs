@@ -3,8 +3,14 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Gets and sets axes of Vector2s
+	/// </summary>
 	public static class Vector2FloatUtil
 	{
+		/// <summary>
+		/// Gets axis value from Vector2
+		/// </summary>
 		public static float GetValue(Axis2D axis, Vector2 v)
 		{
 			switch (axis)
@@ -19,6 +25,9 @@ namespace dninosores.UnityAccessors
 		}
 
 
+		/// <summary>
+		/// Sets axis value in Vector2 and returns the Vector2 with value set.
+		/// </summary>
 		public static Vector2 SetValue(Axis2D axis, Vector2 v, float value)
 		{
 			switch (axis)

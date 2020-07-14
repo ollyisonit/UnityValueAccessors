@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accessor containing a dropdown of all BoolAccessors that don't reference other BoolAccessors.
+	/// </summary>
 	[Serializable]
 	public class AnyFlatBoolAccessor : Accessor<bool>
 	{
@@ -14,6 +17,7 @@ namespace dninosores.UnityAccessors
 			Constant = 2
 		}
 
+		[Tooltip("Where should the value be accessed from?")]
 		public ValueType valueType;
 
 		[ConditionalHide("valueType", ValueType.Reflected, "Accessor")]

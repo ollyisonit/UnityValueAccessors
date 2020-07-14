@@ -3,11 +3,16 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Gets float from a RectTransform.
+	/// </summary>
 	[Serializable]
 	public class RectTransformFloatAccessor : Accessor<float>
 	{
 		public RectTransform rectTransform;
+		[Tooltip("Where should the value be accessed from?")]
 		public ValueType valueType;
+		[Tooltip("Which axis should be accessed?")]
 		public Axis2D axis;
 
 		public enum ValueType

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses the a field of an object by name.
+	/// </summary>
 	[Serializable]
 	public class ReflectedAccessor<T> : Accessor<T>
 	{

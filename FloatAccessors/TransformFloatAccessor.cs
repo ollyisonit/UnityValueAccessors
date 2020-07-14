@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses a float value from a Transform.
+	/// </summary>
 	[Serializable]
 	public class TransformFloatAccessor : Accessor<float>
 	{
@@ -18,6 +21,7 @@ namespace dninosores.UnityAccessors
 		}
 
 		public Transform transform;
+		[Tooltip("Where should the value be accessed from?")]
 		public TransformType transformType;
 
 		[ConditionalHide(new string[] { "transformType", "transformType", "transformType", "transformType", "transformType" },

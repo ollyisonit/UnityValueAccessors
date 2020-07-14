@@ -3,9 +3,13 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Get color from a light.
+	/// </summary>
 	[Serializable]
 	public class LightColorAccessor : Accessor<Color>
 	{
+		[Tooltip("Light to get color from")]
 		public Light light;
 
 		public override Color GetValue()

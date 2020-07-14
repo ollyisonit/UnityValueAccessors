@@ -3,8 +3,14 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Gets and sets Vector3 axis values.
+	/// </summary>
 	public static class Vector3FloatUtil
 	{
+		/// <summary>
+		/// Gets axis value from Vector3
+		/// </summary>
 		public static float GetValue(Axis3D axis, Vector3 vector)
 		{
 			switch (axis)
@@ -21,6 +27,9 @@ namespace dninosores.UnityAccessors
 		}
 
 
+		/// <summary>
+		/// Sets axis value in Vector3 and returns the Vector3 with the axis set.
+		/// </summary>
 		public static Vector3 SetValue(Axis3D axis, Vector3 vector, float value)
 		{
 			switch (axis)

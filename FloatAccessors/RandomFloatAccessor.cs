@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Gets a random float value.
+	/// </summary>
 	[Serializable]
 	public class RandomFloatAccessor : RandomAccessor<float>
 	{

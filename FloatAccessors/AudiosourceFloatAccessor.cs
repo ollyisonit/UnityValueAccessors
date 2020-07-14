@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Gets float value from audio source.
+	/// </summary>
 	[Serializable]
 	public class AudiosourceFloatAccessor : Accessor<float>
 	{
@@ -17,6 +20,7 @@ namespace dninosores.UnityAccessors
 			SpatialBlend = 5,
 		}
 
+		[Tooltip("Where should the value be accessed from?")]
 		public ValueType valueType;
 
 		public override float GetValue()

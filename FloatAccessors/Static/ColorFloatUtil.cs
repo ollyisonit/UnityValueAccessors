@@ -3,8 +3,14 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Gets and sets specific color channels using ColorChannel enum.
+	/// </summary>
 	public static class ColorFloatUtil
 	{
+		/// <summary>
+		/// Gets value of color's channel.
+		/// </summary>
 		public static float GetChannel(Color c, ColorChannel channel)
 		{
 			switch (channel)
@@ -23,6 +29,9 @@ namespace dninosores.UnityAccessors
 		}
 
 
+		/// <summary>
+		/// Sets value of color's channel.
+		/// </summary>
 		public static Color SetChannel(Color c, ColorChannel channel, float value)
 		{
 			switch (channel)

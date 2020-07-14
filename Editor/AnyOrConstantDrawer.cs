@@ -40,7 +40,7 @@ namespace dninosores.UnityAccessors
             Rect boolRect = new Rect(rect.x, rect.y, EditorGUI.GetPropertyHeight(isAccessed) + BOOL_SPACING, EditorGUI.GetPropertyHeight(isAccessed));
            // GUI.Button(boolRect, new GUIContent("C"));
             // EditorGUI.DrawRect(boolRect, Color.red);
-           isAccessed.boolValue = EditorGUI.Toggle(boolRect, isAccessed.boolValue, GUI.skin.button);
+           isAccessed.boolValue = EditorGUI.Toggle(boolRect, new GUIContent("", "Toggles between constant and access mode"), isAccessed.boolValue, GUI.skin.button);
 
 
             float spacing = EditorGUI.GetPropertyHeight(isAccessed) + BOOL_SPACING + BOOL_PADDING;

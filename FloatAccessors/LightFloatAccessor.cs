@@ -4,10 +4,14 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Gets float value from a light.
+	/// </summary>
 	[Serializable]
 	public class LightFloatAccessor : Accessor<float>
 	{
 		public Light light;
+		[Tooltip("Where should the value be accessed from?")]
 		public ValueType valueType;
 		public enum ValueType
 		{

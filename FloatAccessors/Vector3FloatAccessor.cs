@@ -4,13 +4,21 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses a float from a Vector3Accessor.
+	/// </summary>
 	[Serializable]
 	public class Vector3FloatAccessor : Accessor<float>
 	{
+		[Tooltip("Which axis should values be read from?")]
 		public Axis3D sourceAxis;
+		[Tooltip("Should values be written to the X axis?")]
 		public bool setX;
+		[Tooltip("Should values be written to the Y axis?")]
 		public bool setY;
+		[Tooltip("Should values be written to the Z axis?")]
 		public bool setZ;
+		[Tooltip("Should values that aren't being written be replaced with a constant value?")]
 		public bool constantFill;
 		[ConditionalHide("constantFill", true)]
 		public float fillValue;

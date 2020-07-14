@@ -44,6 +44,10 @@ namespace dninosores.UnityAccessors
 		}
 
 
+		/// <summary>
+		/// Gets a random float between the two given values (inclusive) using given AnimationCurve as bias.
+		/// Automatically reverses min and max if they're out of order.
+		/// </summary>
 		public static float RandomFloat(float min, float max, AnimationCurve bias)
 		{
 			if (min > max)

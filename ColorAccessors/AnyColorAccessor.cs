@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Access a color using any existing color accessor.
+	/// </summary>
 	[Serializable]
 	public class AnyColorAccessor : Accessor<Color>
 	{
@@ -16,6 +19,7 @@ namespace dninosores.UnityAccessors
 			Constant = 4
 		}
 
+		[Tooltip("Where should the value be accessed from?")]
 		public AccessType accessType;
 
 		[ConditionalHide("accessType", AccessType.Image, "Accessor")]
