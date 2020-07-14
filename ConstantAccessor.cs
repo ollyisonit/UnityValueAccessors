@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Stores a reference to a constant value.
+	/// </summary>
 	[Serializable]
 	public class ConstantAccessor<T> : Accessor<T>
 	{

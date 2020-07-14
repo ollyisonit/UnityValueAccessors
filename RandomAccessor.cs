@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Gets a random value of given type.
+	/// </summary>
 	[Serializable]
 	public abstract class RandomAccessor<T> : Accessor<T>
 	{

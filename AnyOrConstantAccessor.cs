@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Allows user to choose between using a constant variable or an accessor to get a value.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
 	[Serializable]
 	public abstract class AnyOrConstantAccessor<T> : Accessor<T>
 	{
