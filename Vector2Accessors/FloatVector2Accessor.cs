@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses a Vector2 by converting a value from a FloatAccessor.
+	/// </summary>
 	[Serializable]
 	public class FloatVector2Accessor : Accessor<Vector2>
 	{
@@ -13,6 +16,7 @@ namespace dninosores.UnityAccessors
 			Merged = 1
 		}
 
+		[Tooltip("How should the float value(s) be converted to a Vector2?")]
 		public AccessMode accessMode;
 
 		[ConditionalHide("accessMode", AccessMode.Merged)]

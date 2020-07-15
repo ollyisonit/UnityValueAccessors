@@ -4,12 +4,17 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses a Vector3 by converting a Vector2.
+	/// </summary>
 	[Serializable]
 	public class Vector2Vector3Accessor : Accessor<Vector3>
 	{
-
+		[Tooltip("Which axis of the Vector3 should store the Vector2's X value?")]
 		public Axis3D xValueTo;
+		[Tooltip("Which axis of the Vector3 should store the Vector2's Y value?")]
 		public Axis3D yValueTo;
+		[Tooltip("What value should be used to fill in axes that aren't being set?")]
 		public float fillConstant;
 
 		public AnyFlatVector2Accessor vector2;

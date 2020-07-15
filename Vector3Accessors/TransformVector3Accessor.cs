@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses a Vector3 from a transform.
+	/// </summary>
 	[Serializable]
 	public class TransformVector3Accessor : Accessor<Vector3>
 	{
@@ -16,6 +19,7 @@ namespace dninosores.UnityAccessors
 		}
 
 		public Transform transform;
+		[Tooltip("Where should the value be accessed from?")]
 		public TransformType transformType;
 
 		public override Vector3 GetValue()

@@ -20,6 +20,7 @@ namespace dninosores.UnityAccessors
 
 		}
 
+		[Tooltip("Where should the value be accessed from?")]
 		public AccessType accessType;
 
 		[ConditionalHide("accessType", AccessType.Transform, "Accessor")]

@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Gets a Vector2 from a RectTransform.
+	/// </summary>
 	[Serializable]
 	public class RectTransformVector2Accessor : Accessor<Vector2>
 	{
@@ -17,6 +20,7 @@ namespace dninosores.UnityAccessors
 			sizeDelta =6
 		}
 
+		[Tooltip("Which field should the value be accessed from?")]
 		public ValueType valueType;
 		public RectTransform rect;
 

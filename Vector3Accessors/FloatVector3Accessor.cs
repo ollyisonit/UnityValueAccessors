@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses a Vector3 by converting a float value.
+	/// </summary>
 	[Serializable]
 	public class FloatVector3Accessor : Accessor<Vector3>
 	{
@@ -14,6 +17,7 @@ namespace dninosores.UnityAccessors
 			Merged = 1
 		}
 
+		[Tooltip("Should each axis of the Vector3 be considered individually or should they all share the same value?")]
 		public AccessMode accessMode;
 
 		[ConditionalHide("accessMode", AccessMode.Merged)]

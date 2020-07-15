@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses a Vector2 using any existing Vector2Accessor.
+	/// </summary>
 	[Serializable]
 	public class AnyVector2Accessor : Accessor<Vector2>
 	{
@@ -20,7 +23,7 @@ namespace dninosores.UnityAccessors
 			Random = 6
 		}
 
-
+		[Tooltip("Where should the value be accessed from?")]
 		public AccessType accessType;
 
 		[ConditionalHide("accessType", AccessType.RectTransform, "Accessor")]

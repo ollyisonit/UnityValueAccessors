@@ -9,8 +9,11 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public abstract class RandomAccessor<T> : Accessor<T>
 	{
+		[Tooltip("How should the results of the random operation be distrubuted? A linear curve from (0, 0) to (1, 1) corresponds to even probability.")]
 		public AnimationCurve bias;
+		[Tooltip("Lowest possible value that can be returned (inclusive)")]
 		public T min;
+		[Tooltip("Highest possible value that can be returned (inclusive)")]
 		public T max;
 
 		public override void Reset(GameObject source)

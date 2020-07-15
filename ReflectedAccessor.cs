@@ -10,7 +10,10 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class ReflectedAccessor<T> : Accessor<T>
 	{
+		[Tooltip("Object to access a field or property from")]
 		public UnityEngine.Object sourceObject;
+		[Tooltip("The name of the field to access. A '.' can be used to specify a path. For example, in order to access" +
+			"the X position of a transform you would reference a Transform as the sourceObject and write 'position.x' here.")]
 		public string field;
 
 		public override T GetValue()
@@ -44,6 +47,9 @@ namespace dninosores.UnityAccessors
 		}
 
 
+		/// <summary>
+		/// Gets the value from a field or property of an object by name.
+		/// </summary>
 		public static object GetValueFromObject(object source, string fieldName)
 		{
 			Type objType = source.GetType();
@@ -63,6 +69,9 @@ namespace dninosores.UnityAccessors
 			throw new ArgumentException("No field or property with name '" + fieldName + "' on object '" + objType + "' found!");
 		}
 
+		/// <summary>
+		/// Sets the value from a field or property of an object by name.
+		/// </summary>
 		public static void SetValueInObject(object source, string fieldName, object value)
 		{
 			Type objType = source.GetType();

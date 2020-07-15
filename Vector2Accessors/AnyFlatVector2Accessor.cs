@@ -19,7 +19,7 @@ namespace dninosores.UnityAccessors
 			Random = 6
 		}
 
-
+		[Tooltip("Where should the value be accessed from?")]
 		public AccessType accessType;
 
 		[ConditionalHide("accessType", AccessType.RectTransform, "Accessor")]

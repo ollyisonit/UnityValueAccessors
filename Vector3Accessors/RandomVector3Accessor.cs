@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses a random Vector3.
+	/// </summary>
 	[Serializable]
 	public class RandomVector3Accessor : Accessor<Vector3>
 	{
@@ -13,6 +16,7 @@ namespace dninosores.UnityAccessors
 			Split
 		}
 
+		[Tooltip("Should a random Vector3 be chosen from between two corner points or should each axis be considered individually?")]
 		public VectorMode mode;
 
 		[ConditionalHide("mode", VectorMode.United)]

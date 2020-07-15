@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses a string using any existing StringAccessor.
+	/// </summary>
 	[Serializable]
 	public class AnyStringAccessor : Accessor<string>
 	{
@@ -14,6 +17,7 @@ namespace dninosores.UnityAccessors
 			Constant = 2
 		}
 
+		[Tooltip("Where should the value be accessed from?")]
 		public ValueType valueType;
 
 		[ConditionalHide("valueType", ValueType.Custom, "Accessor")]

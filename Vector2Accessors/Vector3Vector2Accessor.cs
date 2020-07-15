@@ -3,10 +3,15 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses a Vector2 by converting it from a Vector3Accessor.
+	/// </summary>
 	[Serializable]
 	public class Vector3Vector2Accessor : Accessor<Vector2>
 	{
+		[Tooltip("Which axis from the Vector3 should become the X axis for the Vector2?")]
 		public Axis3D xSource;
+		[Tooltip("Which axis from the Vector3 should become the Y axis for the Vector2?")]
 		public Axis3D ySource;
 		public AnyFlatVector3Accessor vector;
 

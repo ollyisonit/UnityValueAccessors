@@ -9,7 +9,9 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class ConstantAccessor<T> : Accessor<T>
 	{
+		[Tooltip("Constant value that is being referenced")]
 		public T value;
+		[Tooltip("Should other scripts not be allowed to change the value stored here?")]
 		public bool readOnly;
 
 		public override T GetValue()

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses an integer using any other IntAccessor
+	/// </summary>
 	[Serializable]
 	public class AnyIntAccessor : Accessor<int>
 	{
@@ -15,6 +18,7 @@ namespace dninosores.UnityAccessors
 			Random = 3
 		}
 
+		[Tooltip("Where should the value be accessed from?")]
 		public ValueType valueType;
 
 		[ConditionalHide("valueType", ValueType.Custom, "Accessor")]

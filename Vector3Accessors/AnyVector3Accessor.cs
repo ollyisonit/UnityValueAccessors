@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace dninosores.UnityAccessors
 {
+	/// <summary>
+	/// Accesses a Vector3 using any of the other defined Vector3Accessors.
+	/// </summary>
 	[Serializable]
 	public class AnyVector3Accessor : Accessor<Vector3>
 	{
@@ -21,6 +24,7 @@ namespace dninosores.UnityAccessors
 							
 		}
 
+		[Tooltip("Where should the value be accessed from?")]
 		public AccessType accessType;
 
 		[ConditionalHide("accessType", AccessType.Transform, "Accessor")]

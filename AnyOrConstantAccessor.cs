@@ -10,8 +10,11 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public abstract class AnyOrConstantAccessor<T> : Accessor<T>
 	{
+		[Tooltip("Should an accessor be used to get the value?")]
 		public bool accessed = false;
+		[Tooltip("Constant value")]
 		public T value;
+
 		/// <summary>
 		/// Override this property to point at a public Accessor named "accessorValue" in order for property
 		/// drawer to work properly.
