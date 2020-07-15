@@ -1,12 +1,49 @@
-# UnityValueAccessors
+# Unity Value Accessors
+Objects that can store references to commonly read/written values in Unity to make your scripts more flexible.
 
-Classes to document:
--Accessor
--CustomAccessor and the quirk with generics
--Any accessors have options that are from a specific component or Random, Reflected, Custom, and Constant. 
-Some also have conversions.
--AnyOrConstant let you pick whether its a constant or an accessor
--Available for Bool, Color, Float, Int, String, Vector2, and Vector3
--How to create your own accessor of one of the existing types
--How to create your own accessor with a type that's not implemented yet
--The ResetAccessors method
+## What is an Accessor?
+An Accessor is an object that stores a reference to a value on an object. It has two methods: GetValue(), which returns the value that is being referenced, and SetValue(), which sets the value being referenced. For example, you could make an Accessor that stores a reference to the x position of a GameObject; the GetValue() method would return the object's x position and the SetValue() would set the GameObject's x position.
+Accessors also contain a Reset() method that can be used to reset the Accessor back to a sensible default state. All Accessors in this library will default to referencing components on the same GameObject that they are attached to.
+
+## Why use Accessors?
+Accessors are useful in situations where you find yourself writing the same script over and over again, but for different values. For example, if you have one script that changes the color of an image over time and another script that changes the color of text over time, Accessors allow you to combine those two scripts into one script that just changes any color over time. The Accessor handles sending that color to the appropriate object.
+
+## Features
+
+ - Accessors for commonly used int, bool, float, string, Color, Vector2, and Vector3 values in unity, such as Image.Color and Transform.position
+ - The ability to access int, bool, float, string, Color, Vector2, and Vector3 values from any object by name
+ - The ability to access random int, float, Vector2, and Vector3 values with custom bias
+ - The ability to convert between supported types
+ - The ability to toggle between accessed values and constant values in-editor
+ - Full support for implementing your own custom Accessors
+
+## The AnyOrConstant Accessor
+The AnyOrConstant Accessor is the most versatile type of Accessor in this library, and it's the only type of Accessor you should ever need to use. It allows the user to toggle between using a constant value and using any Accessor in the library. Seven AnyOrConstant accessors are included in this library, one for each supported data type:
+ - FloatOrConstantAccessor
+ - IntOrConstantAccessor
+ - BoolOrConstantAccessor
+ - StringOrConstantAccessor
+ - ColorOrConstantAccessor
+ - Vector2OrConstantAccessor
+ - Vector3OrConstantAccessor
+ 
+When you add one of these objects to your script as a public variable, it will show up in the editor which a small button next to its name. Clicking that button will toggle the Accessor between constant mode, where you can type in the value you want the Accessor to reference, and referenced mode, where you will be presented with a dropdown menu containing all of the different ways you can access a value of that type. Depending on the data type that you are trying to access, different options will become available in the dropdown. For example, the FloatOrConstantAccessor allows you to pick from a variety of sources to take values from, including Transforms, Lights, and AudioSources. However, the dropdown will always contain at least these three options:
+ - Constant: Gets a constant value that you type into the inspector
+ - Custom: Gets a value from a CustomValueAccessor that you've implemented yourself
+ - Reflected: Allows you to get a value from any field or property of any object in the Unity editor by name
+ 
+ If you don't want to give the option to choose between a constant and accessed value, use the type's corresponding AnyAccessor (AnyFloatAccessor for FloatOrConstantAccessor, AnyStringAccessor for StringOrConstantAccessor, etc).
+
+## Custom Accessors
+If you want to make your own accessor that is compatible with the AnyAccessors and the AnyOrConstantAccessors, you can do so by extending the appropriate CustomAccessor class. For example, if you want to make a custom Accessor for float values, you would extend CustomFloatAccessor. Next, you would need to attach that script to a GameObject, and reference that script from an AnyAccessor or AnyOrConstantAccessor that has been set to 'Custom'.
+
+If you want to make an accessor for a type that isn't supported by the library, you either can extend the Accessor<T\> class with for Accessors that will appear as menus in-editor, or the CustomAccessor<T\> class for Accessors that will appear as MonoBehaviours that you can attach to objects and reference. If you're extending Accessor<T\>, make sure to mark your class with the [Serializable] attribute or it won't show up in the editor. If you're extending the CustomAccessor<T\> class, you first need to extend it into an empty abstract class that uses T as the type you are trying to access and then use that abstract class for creating your Accessors. The reason you have to do this is that Unity cannot display generic classes in-editor.
+
+## The ResetAccessors Method
+If you have a lot of Accessors in a script, it can be annoying to need to call each of their Reset() methods individually. The ResetAccessors.Reset method will automatically find and reset all Accessor fields on the object you give it. If any of those fields are null, new Accessors of the appropriate type will be automatically created and reset to fill them.
+
+## Dependencies
+This library requires that you have the [UnityEditorAttributes](https://github.com/dninosores/UnityEditorAttributes) library in your Unity project.
+
+## Installation
+Download or clone this repository and drop it into your Unity project's Assets folder.
