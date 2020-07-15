@@ -2,8 +2,9 @@
 Objects that can store references to commonly read/written values in Unity to make your scripts more flexible.
 
 ## What is an Accessor?
-An Accessor is an object that stores a reference to a value on an object. It has two methods: GetValue(), which returns the value that is being referenced, and SetValue(), which sets the value being referenced. For example, you could make an Accessor that stores a reference to the x position of a GameObject; the GetValue() method would return the object's x position and the SetValue() would set the GameObject's x position.
+An Accessor stores a reference to a value on an object. It has two methods: GetValue(), which returns the value that is being referenced, and SetValue(), which sets the value being referenced. For example, you could make an Accessor that stores a reference to the x position of a Transform; the GetValue() method would return the Transform's x position and the SetValue() would set the Transform's x position.
 Accessors also contain a Reset() method that can be used to reset the Accessor back to a sensible default state. All Accessors in this library will default to referencing components on the same GameObject that they are attached to.
+Finally, Accessors have a Value property that can be get and set as shorthand for calling the GetValue() and SetValue() methods.
 
 ## Why use Accessors?
 Accessors are useful in situations where you find yourself writing the same script over and over again, but for different values. For example, if you have one script that changes the color of an image over time and another script that changes the color of text over time, Accessors allow you to combine those two scripts into one script that just changes any color over time. The Accessor handles sending that color to the appropriate object.
