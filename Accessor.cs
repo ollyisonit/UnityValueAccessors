@@ -13,7 +13,7 @@ namespace dninosores.UnityAccessors
 		/// <summary>
 		/// The GameObject this Accessor is associated with, if applicable.
 		/// </summary>
-		public MonoBehaviour attachedObject;
+		protected MonoBehaviour attachedObject;
 
 		/// <summary>
 		/// The value that the accessor is referencing.
