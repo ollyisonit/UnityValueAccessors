@@ -46,6 +46,7 @@ namespace dninosores.UnityAccessors
 
 		public override void Reset(GameObject attachedObject)
 		{
+			base.Reset(attachedObject);
 			source = attachedObject.GetComponent<AudioSource>();
 		}
 

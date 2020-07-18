@@ -27,8 +27,6 @@ namespace dninosores.UnityAccessors
 			base.Reset(attachedObject);
 			xSource = Axis3D.X;
 			ySource = Axis3D.Y;
-			vector = new AnyFlatVector3Accessor();
-			vector.Reset(attachedObject);
 		}
 
 

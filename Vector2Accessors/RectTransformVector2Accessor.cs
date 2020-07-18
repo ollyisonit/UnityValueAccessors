@@ -50,6 +50,7 @@ namespace dninosores.UnityAccessors
 
 		public override void Reset(GameObject attachedObject)
 		{
+			base.Reset(attachedObject);
 			rect = attachedObject.GetComponent<RectTransform>();
 		}
 

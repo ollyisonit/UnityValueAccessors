@@ -43,6 +43,7 @@ namespace dninosores.UnityAccessors
 
 		public override void Reset(GameObject attachedObject)
 		{
+			base.Reset(attachedObject);
 			transform = attachedObject.transform;
 		}
 

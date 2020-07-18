@@ -31,8 +31,6 @@ namespace dninosores.UnityAccessors
 		public override void Reset(GameObject attachedObject)
 		{
 			base.Reset(attachedObject);
-			vector2 = new AnyFlatVector2Accessor();
-			vector2.Reset(attachedObject);
 			setX = true;
 			setY = false;
 			constantFill = false;

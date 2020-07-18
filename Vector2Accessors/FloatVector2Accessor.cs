@@ -46,16 +46,6 @@ namespace dninosores.UnityAccessors
 			}
 		}
 
-		public override void Reset(GameObject o)
-		{
-			base.Reset(attachedObject);
-			Float = new AnyFlatFloatAccessor();
-			Float.Reset(o);
-			x = new AnyFlatFloatAccessor();
-			x.Reset(o);
-			y = new AnyFlatFloatAccessor();
-			y.Reset(o);
-		}
 
 		protected override void SetValue(Vector2 value)
 		{

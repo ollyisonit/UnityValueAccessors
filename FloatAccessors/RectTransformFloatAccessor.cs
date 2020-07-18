@@ -98,6 +98,7 @@ namespace dninosores.UnityAccessors
 
 		public override void Reset(GameObject attachedObject)
 		{
+			base.Reset(attachedObject);
 			rectTransform = attachedObject.GetComponent<RectTransform>();
 		}
 	}

@@ -19,6 +19,7 @@ namespace dninosores.UnityAccessors
 
 		public override void Reset(GameObject attachedObject)
 		{
+			base.Reset(attachedObject);
 			light = attachedObject.GetComponent<Light>();
 		}
 

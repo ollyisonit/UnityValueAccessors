@@ -73,12 +73,12 @@ namespace dninosores.UnityAccessors
 
 
 		/// <summary>
-		/// Sets Accessor to reference a sensible value when the editor is reset.
+		/// Sets Accessor to reference a sensible value when the editor is reset. Will automatically reset any 
+		/// accessors that are fields of this object. Don't forget to call base.Reset() in your override!
 		/// </summary>
 		/// <param name="attachedObject">GameObject the accessor is associated with.</param>
 		public virtual void Reset(GameObject attachedObject)
 		{
-
 			ResetAccessors.Reset(this, attachedObject);
 			this.attachedObject = attachedObject.gameObject;
 		}

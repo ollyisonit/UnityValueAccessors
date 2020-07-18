@@ -20,6 +20,7 @@ namespace dninosores.UnityAccessors
 
 		public override void Reset(GameObject attachedObject)
 		{
+			base.Reset(attachedObject);
 			image = attachedObject.GetComponent<Image>();
 		}
 
