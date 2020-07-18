@@ -22,7 +22,7 @@ namespace dninosores.UnityAccessors
 			return new Vector2(Vector3FloatUtil.GetValue(xSource, v3), Vector3FloatUtil.GetValue(ySource, v3));
 		}
 
-		public override void Reset(GameObject attachedObject)
+		public override void Reset(MonoBehaviour attachedObject)
 		{
 			base.Reset(attachedObject);
 			xSource = Axis3D.X;

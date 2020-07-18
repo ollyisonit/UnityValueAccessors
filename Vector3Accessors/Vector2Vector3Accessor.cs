@@ -30,7 +30,7 @@ namespace dninosores.UnityAccessors
 			return outValue;
 		}
 
-		public override void Reset(GameObject attachedObject)
+		public override void Reset(MonoBehaviour attachedObject)
 		{
 			base.Reset(attachedObject);
 			xValueTo = Axis3D.X;

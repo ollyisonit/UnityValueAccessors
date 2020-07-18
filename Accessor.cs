@@ -13,7 +13,7 @@ namespace dninosores.UnityAccessors
 		/// <summary>
 		/// The GameObject this Accessor is associated with, if applicable.
 		/// </summary>
-		public GameObject attachedObject;
+		public MonoBehaviour attachedObject;
 
 		/// <summary>
 		/// The value that the accessor is referencing.
@@ -56,7 +56,7 @@ namespace dninosores.UnityAccessors
 
 		private string GetErrorPrefix()
 		{
-			return "Exception on '" + attachedObject.name + "': ";
+			return "Exception on '" + attachedObject.GetType().Name + "'.'" + this.GetType().Name + ": \n";
 		}
 
 
@@ -77,10 +77,10 @@ namespace dninosores.UnityAccessors
 		/// accessors that are fields of this object. Don't forget to call base.Reset() in your override!
 		/// </summary>
 		/// <param name="attachedObject">GameObject the accessor is associated with.</param>
-		public virtual void Reset(GameObject attachedObject)
+		public virtual void Reset(MonoBehaviour attachedObject)
 		{
 			ResetAccessors.Reset(this, attachedObject);
-			this.attachedObject = attachedObject.gameObject;
+			this.attachedObject = attachedObject;
 		}
 	}
 }

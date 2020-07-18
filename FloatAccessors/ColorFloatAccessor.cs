@@ -26,7 +26,7 @@ namespace dninosores.UnityAccessors
 			return ColorFloatUtil.GetChannel(color.Value, sourceChannel);
 		}
 
-		public override void Reset(GameObject attachedObject)
+		public override void Reset(MonoBehaviour attachedObject)
 		{
 			base.Reset(attachedObject);
 			setR = false;

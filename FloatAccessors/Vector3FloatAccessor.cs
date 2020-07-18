@@ -30,7 +30,7 @@ namespace dninosores.UnityAccessors
 			return Vector3FloatUtil.GetValue(sourceAxis, vector3.Value);
 		}
 
-		public override void Reset(GameObject attachedObject)
+		public override void Reset(MonoBehaviour attachedObject)
 		{
 			base.Reset(attachedObject);
 			setX = true;

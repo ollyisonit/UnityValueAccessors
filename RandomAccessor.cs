@@ -16,7 +16,7 @@ namespace dninosores.UnityAccessors
 		[Tooltip("Highest possible value that can be returned (inclusive)")]
 		public T max;
 
-		public override void Reset(GameObject source)
+		public override void Reset(MonoBehaviour source)
 		{
 			base.Reset(source);
 			bias = AnimationCurve.Linear(0, 0, 1, 1);

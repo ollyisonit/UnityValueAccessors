@@ -33,7 +33,7 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("mode", VectorMode.Split)]
 		public RandomFloatAccessor Z;
 
-		public override void Reset(GameObject o)
+		public override void Reset(MonoBehaviour o)
 		{
 			base.Reset(o);
 			bias = AnimationCurve.Linear(0, 0, 1, 1);

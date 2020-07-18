@@ -18,7 +18,7 @@ namespace dninosores.UnityAccessors
 			return image.color;
 		}
 
-		public override void Reset(GameObject attachedObject)
+		public override void Reset(MonoBehaviour attachedObject)
 		{
 			base.Reset(attachedObject);
 			image = attachedObject.GetComponent<Image>();

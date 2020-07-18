@@ -92,7 +92,7 @@ namespace dninosores.UnityAccessors
 			throw new ArgumentException("No field or property with name '" + fieldName + "' on object '" + objType + "' found!");
 		}
 
-		public override void Reset(GameObject attachedObject)
+		public override void Reset(MonoBehaviour attachedObject)
 		{
 			base.Reset(attachedObject);
 			sourceObject = attachedObject.GetComponent<Component>();

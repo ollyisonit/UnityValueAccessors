@@ -34,7 +34,7 @@ namespace dninosores.UnityAccessors
 
 		}
 
-		public override void Reset(GameObject attachedObject)
+		public override void Reset(MonoBehaviour attachedObject)
 		{
 			base.Reset(attachedObject);
 			accessed = false;

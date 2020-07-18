@@ -13,7 +13,7 @@ namespace dninosores.UnityAccessors
 		/// <summary>
 		/// Resets all accessors stored in fields of source to point at components of GameObject attached.
 		/// </summary>
-		public static void Reset(object source, GameObject attached, BindingFlags flags = BindingFlags.GetField | BindingFlags.Public | BindingFlags.Instance)
+		public static void Reset(object source, MonoBehaviour attached, BindingFlags flags = BindingFlags.GetField | BindingFlags.Public | BindingFlags.Instance)
 		{
 			foreach (FieldInfo field in source.GetType().GetFields(flags))
 			{

@@ -17,7 +17,7 @@ namespace dninosores.UnityAccessors
 			return light.color;
 		}
 
-		public override void Reset(GameObject attachedObject)
+		public override void Reset(MonoBehaviour attachedObject)
 		{
 			base.Reset(attachedObject);
 			light = attachedObject.GetComponent<Light>();
