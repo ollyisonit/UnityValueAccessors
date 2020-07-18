@@ -29,7 +29,7 @@ namespace dninosores.UnityAccessors
 			TransformType.LocalRotation, TransformType.LocalScale}, ConditionalHideAttribute.FoldBehavior.Or)]
 		public Axis3D transformAxis;
 
-		public override float GetValue()
+		protected override float GetValue()
 		{
 			if (transformType == TransformType.LocalScaleAllAxes)
 			{
@@ -38,7 +38,7 @@ namespace dninosores.UnityAccessors
 			return Vector3FloatUtil.GetValue(transformAxis, GetVector3FromTransform(transformType, transform));
 		}
 
-		public override void SetValue(float value)
+		protected override void SetValue(float value)
 		{
 			if (transformType == TransformType.LocalScaleAllAxes)
 			{

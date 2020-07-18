@@ -63,7 +63,7 @@ namespace dninosores.UnityAccessors
 		}
 
 
-		public override void SetValue(T value)
+		protected override void SetValue(T value)
 		{
 			Debug.LogWarning("Cannot set value of Random Accessor!");
 		}

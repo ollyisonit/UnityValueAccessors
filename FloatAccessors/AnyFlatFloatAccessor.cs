@@ -57,18 +57,18 @@ namespace dninosores.UnityAccessors
 
 
 
-		public override float GetValue()
+		protected override float GetValue()
 		{
 			switch (accessType)
 			{
 				case AccessType.Transform:
-					return transformToModify.GetValue();
+					return transformToModify.Value;
 				case AccessType.RectTransform:
-					return rectToModify.GetValue();
+					return rectToModify.Value;
 				case AccessType.Light:
-					return lightToModify.GetValue();
+					return lightToModify.Value;
 				case AccessType.Custom:
-					return customAccessor.GetValue();
+					return customAccessor.Value;
 				case AccessType.Constant:
 					return constant.Value;
 				case AccessType.AudioSource:
@@ -85,21 +85,21 @@ namespace dninosores.UnityAccessors
 			}
 		}
 
-		public override void SetValue(float value)
+		protected override void SetValue(float value)
 		{
 			switch (accessType)
 			{
 				case AccessType.Transform:
-					transformToModify.SetValue(value);
+					transformToModify.Value = value;
 					break;
 				case AccessType.RectTransform:
-					rectToModify.SetValue(value);
+					rectToModify.Value = value;
 					break;
 				case AccessType.Light:
-					lightToModify.SetValue(value);
+					lightToModify.Value = value;
 					break;
 				case AccessType.Custom:
-					customAccessor.SetValue(value);
+					customAccessor.Value = value;
 					break;
 				case AccessType.Constant:
 					constant.Value = value;

@@ -21,7 +21,7 @@ namespace dninosores.UnityAccessors
 
 
 
-		public override Vector3 GetValue()
+		protected override Vector3 GetValue()
 		{
 			Vector3 outValue = new Vector3(fillConstant, fillConstant, fillConstant);
 			Vector2 orig = vector2.Value;
@@ -38,7 +38,7 @@ namespace dninosores.UnityAccessors
 			yValueTo = Axis3D.Y;
 		}
 
-		public override void SetValue(Vector3 value)
+		protected override void SetValue(Vector3 value)
 		{
 			vector2.Value = new Vector2(Vector3FloatUtil.GetValue(xValueTo, value),
 				Vector3FloatUtil.GetValue(yValueTo, value));

@@ -16,14 +16,15 @@ namespace dninosores.UnityAccessors
 		public AnyFlatVector3Accessor vector;
 
 
-		public override Vector2 GetValue()
+		protected override Vector2 GetValue()
 		{
-			Vector3 v3 = vector.GetValue();
+			Vector3 v3 = vector.Value;
 			return new Vector2(Vector3FloatUtil.GetValue(xSource, v3), Vector3FloatUtil.GetValue(ySource, v3));
 		}
 
 		public override void Reset(GameObject attachedObject)
 		{
+			base.Reset(attachedObject);
 			xSource = Axis3D.X;
 			ySource = Axis3D.Y;
 			vector = new AnyFlatVector3Accessor();
@@ -31,7 +32,7 @@ namespace dninosores.UnityAccessors
 		}
 
 
-		public override void SetValue(Vector2 value)
+		protected override void SetValue(Vector2 value)
 		{
 			Vector3 target = vector.Value;
 			Vector3FloatUtil.SetValue(xSource, target, value.x);

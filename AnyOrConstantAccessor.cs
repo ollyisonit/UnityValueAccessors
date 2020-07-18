@@ -21,7 +21,7 @@ namespace dninosores.UnityAccessors
 		/// </summary>
 		public abstract Accessor<T> AccessorValue { get; }
 
-		public override T GetValue()
+		protected override T GetValue()
 		{
 			if (!accessed)
 			{
@@ -40,7 +40,7 @@ namespace dninosores.UnityAccessors
 			accessed = false;
 		}
 
-		public override void SetValue(T value)
+		protected override void SetValue(T value)
 		{
 			if (!accessed)
 			{

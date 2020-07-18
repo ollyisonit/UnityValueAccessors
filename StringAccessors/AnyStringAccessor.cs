@@ -29,12 +29,12 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("valueType", ValueType.Constant, "Accessor")]
 		public ConstantStringAccessor constant;
 
-		public override string GetValue()
+		protected override string GetValue()
 		{
 			switch (valueType)
 			{
 				case ValueType.Custom:
-					return customAccessor.GetValue();
+					return customAccessor.Value;
 				case ValueType.Reflected:
 					return reflectedAccessor.Value;
 				case ValueType.Constant:
@@ -53,18 +53,18 @@ namespace dninosores.UnityAccessors
 			constant.Reset(attachedObject);
 		}
 
-		public override void SetValue(string value)
+		protected override void SetValue(string value)
 		{
 			switch (valueType)
 			{
 				case ValueType.Custom:
-					customAccessor.SetValue(value);
+					customAccessor.Value = value;
 					break;
 				case ValueType.Reflected:
-					reflectedAccessor.SetValue(value);
+					reflectedAccessor.Value = value;
 					break;
 				case ValueType.Constant:
-					constant.SetValue(value);
+					constant.Value = value;
 					break;
 				default:
 					throw new NotImplementedException("Case not found for " + valueType);

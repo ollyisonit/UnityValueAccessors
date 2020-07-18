@@ -9,7 +9,7 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class RandomIntAccessor : RandomAccessor<int>
 	{
-		public override int GetValue()
+		protected override int GetValue()
 		{
 			return Mathf.RoundToInt(RandomFloat(min, max));
 		}

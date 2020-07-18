@@ -38,7 +38,7 @@ namespace dninosores.UnityAccessors
 			return Vector2FloatUtil.SetValue(axis, v, value);
 		}
 
-		public override float GetValue()
+		protected override float GetValue()
 		{
 			switch (valueType)
 			{
@@ -61,7 +61,7 @@ namespace dninosores.UnityAccessors
 			}
 		}
 
-		public override void SetValue(float value)
+		protected override void SetValue(float value)
 		{
 			Vector2 Set(Vector2 original)
 			{

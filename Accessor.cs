@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace dninosores.UnityAccessors
@@ -10,30 +11,65 @@ namespace dninosores.UnityAccessors
 	public abstract class Accessor<T>
 	{
 		/// <summary>
+		/// The GameObject this Accessor is associated with, if applicable.
+		/// </summary>
+		public GameObject attachedObject;
+
+		/// <summary>
 		/// The value that the accessor is referencing.
 		/// </summary>
 		public T Value
 		{
 			get
 			{
-				return GetValue();
+				try
+				{
+					return GetValue();
+				}
+				catch (Exception e)
+				{
+					if (attachedObject != null)
+					{
+						Debug.LogError(GetErrorPrefix() + e.Message, attachedObject);
+					}
+					throw e;
+				}
 			}
 			set
 			{
-				SetValue(value);
+				try
+				{
+					SetValue(value);
+				}
+				catch (Exception e)
+				{
+					if (attachedObject != null)
+					{
+						Debug.LogError(GetErrorPrefix() + e.Message, attachedObject);
+					}
+					throw e;
+				}
+				
 			}
 		}
+
+
+		private string GetErrorPrefix()
+		{
+			return "Exception on '" + attachedObject.name + "': ";
+		}
+
 
 		/// <summary>
 		/// Gets the value from the referenced variable.
 		/// </summary>
-		public abstract T GetValue();
+		protected abstract T GetValue();
 
 
 		/// <summary>
 		/// Sets the value of the referenced variable.
 		/// </summary>
-		public abstract void SetValue(T value);
+		protected abstract void SetValue(T value);
 
 
 		/// <summary>
@@ -42,7 +78,9 @@ namespace dninosores.UnityAccessors
 		/// <param name="attachedObject">GameObject the accessor is associated with.</param>
 		public virtual void Reset(GameObject attachedObject)
 		{
+
 			ResetAccessors.Reset(this, attachedObject);
+			this.attachedObject = attachedObject.gameObject;
 		}
 	}
 }

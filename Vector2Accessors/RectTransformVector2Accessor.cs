@@ -24,7 +24,7 @@ namespace dninosores.UnityAccessors
 		public ValueType valueType;
 		public RectTransform rect;
 
-		public override Vector2 GetValue()
+		protected override Vector2 GetValue()
 		{
 			switch (valueType)
 			{
@@ -53,7 +53,7 @@ namespace dninosores.UnityAccessors
 			rect = attachedObject.GetComponent<RectTransform>();
 		}
 
-		public override void SetValue(Vector2 value)
+		protected override void SetValue(Vector2 value)
 		{
 			switch (valueType){
 				case ValueType.anchoredPosition:

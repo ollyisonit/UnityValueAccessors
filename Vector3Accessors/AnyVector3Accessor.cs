@@ -50,58 +50,58 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.Random, "Accessor")]
 		public RandomVector3Accessor random;
 
-		public override Vector3 GetValue()
+		protected override Vector3 GetValue()
 		{
 			switch (accessType)
 			{
 				case AccessType.Transform:
-					return trans.GetValue();
+					return trans.Value;
 				case AccessType.Custom:
-					return custom.GetValue();
+					return custom.Value;
 				#region NESTED
 				case AccessType.Vector2:
-					return vector2.GetValue();
+					return vector2.Value;
 				case AccessType.Float:
 					return Float.Value;
 				#endregion
 				case AccessType.Constant:
-					return constant.GetValue();
+					return constant.Value;
 				case AccessType.Reflected:
-					return reflectedAccess.GetValue();
+					return reflectedAccess.Value;
 				case AccessType.Random:
-					return random.GetValue();
+					return random.Value;
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);
 			}
 		}
 
 
-		public override void SetValue(Vector3 value)
+		protected override void SetValue(Vector3 value)
 		{
 			switch (accessType)
 			{
 				case AccessType.Transform:
-					trans.SetValue(value);
+					trans.Value = value;
 					break;
 				case AccessType.Custom:
-					custom.SetValue(value);
+					custom.Value = value;
 					break;
 				#region NESTED
 				case AccessType.Vector2:
-					vector2.SetValue(value);
+					vector2.Value = value;
 					break;
 				case AccessType.Float:
 					Float.Value = value;
 					break;
 				#endregion
 				case AccessType.Constant:
-					constant.SetValue(value);
+					constant.Value = value;
 					break;
 				case AccessType.Reflected:
-					reflectedAccess.SetValue(value);
+					reflectedAccess.Value = value;
 					break;
 				case AccessType.Random:
-					random.SetValue(value);
+					random.Value = value;
 					break;
 				default:
 					throw new NotImplementedException("Case not found for " + accessType);

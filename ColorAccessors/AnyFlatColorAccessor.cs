@@ -37,37 +37,37 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.Constant, "Accessor")]
 		public ConstantColorAccessor constant;
 
-		public override Color GetValue()
+		protected override Color GetValue()
 		{
 			switch (accessType)
 			{
 				case AccessType.Image:
-					return image.GetValue();
+					return image.Value;
 				case AccessType.Light:
-					return light.GetValue();
+					return light.Value;
 				case AccessType.Custom:
-					return custom.GetValue();
+					return custom.Value;
 				case AccessType.Constant:
-					return constant.GetValue();
+					return constant.Value;
 				case AccessType.Reflected:
-					return reflectedAccess.GetValue();
+					return reflectedAccess.Value;
 				default:
 					throw new NotImplementedException("Case not found for AccessType " + accessType);
 			}
 		}
 
-		public override void SetValue(Color value)
+		protected override void SetValue(Color value)
 		{
 			switch (accessType)
 			{
 				case AccessType.Image:
-					image.SetValue(value);
+					image.Value = (value);
 					break;
 				case AccessType.Light:
-					light.SetValue(value);
+					light.Value = value;
 					break;
 				case AccessType.Custom:
-					custom.SetValue(value);
+					custom.Value = value;
 					break;
 				case AccessType.Constant:
 					constant.Value = value;
@@ -82,15 +82,8 @@ namespace dninosores.UnityAccessors
 
 		public override void Reset(GameObject attachedObject)
 		{
-			image = new ImageColorAccessor();
-			image.Reset(attachedObject);
-			light = new LightColorAccessor();
-			light.Reset(attachedObject);
+			base.Reset(attachedObject);
 			custom = attachedObject.GetComponent<CustomColorAccessor>();
-			reflectedAccess = new ReflectedColorAccessor();
-			reflectedAccess.Reset(attachedObject);
-			constant = new ConstantColorAccessor();
-			constant.Reset(attachedObject);
 		}
 	}
 }

@@ -12,7 +12,7 @@ namespace dninosores.UnityAccessors
 		[Tooltip("Light to get color from")]
 		public Light light;
 
-		public override Color GetValue()
+		protected override Color GetValue()
 		{
 			return light.color;
 		}
@@ -22,7 +22,7 @@ namespace dninosores.UnityAccessors
 			light = attachedObject.GetComponent<Light>();
 		}
 
-		public override void SetValue(Color value)
+		protected override void SetValue(Color value)
 		{
 			light.color = value;
 		}

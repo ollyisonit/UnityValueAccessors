@@ -23,7 +23,7 @@ namespace dninosores.UnityAccessors
 		[Tooltip("Where should the value be accessed from?")]
 		public ValueType valueType;
 
-		public override float GetValue()
+		protected override float GetValue()
 		{
 			switch (valueType)
 			{
@@ -49,7 +49,7 @@ namespace dninosores.UnityAccessors
 			source = attachedObject.GetComponent<AudioSource>();
 		}
 
-		public override void SetValue(float value)
+		protected override void SetValue(float value)
 		{
 			switch (valueType)
 			{

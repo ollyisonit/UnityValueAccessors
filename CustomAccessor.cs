@@ -7,15 +7,27 @@ namespace dninosores.UnityAccessors
 	/// </summary>
 	public abstract class CustomAccessor<T> : MonoBehaviour
 	{
+		public T Value
+		{
+			get
+			{
+				return GetValue();
+			}
+			set
+			{
+				SetValue(value);
+			}
+		}
+
 		/// <summary>
 		/// Gets referenced value.
 		/// </summary>
-		public abstract T GetValue();
+		protected abstract T GetValue();
 
 
 		/// <summary>
 		/// Sets referenced value.
 		/// </summary>
-		public abstract void SetValue(T value);
+		protected abstract void SetValue(T value);
 	}
 }

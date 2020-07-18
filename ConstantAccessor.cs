@@ -14,7 +14,7 @@ namespace dninosores.UnityAccessors
 		[Tooltip("Should other scripts not be allowed to change the value stored here?")]
 		public bool readOnly;
 
-		public override T GetValue()
+		protected override T GetValue()
 		{
 			return value;
 		}
@@ -24,7 +24,7 @@ namespace dninosores.UnityAccessors
 			readOnly = true;
 		}
 
-		public override void SetValue(T value)
+		protected override void SetValue(T value)
 		{
 			if (!readOnly)
 			{

@@ -23,13 +23,14 @@ namespace dninosores.UnityAccessors
 
 		public AnyFlatVector2Accessor vector2;
 
-		public override float GetValue()
+		protected override float GetValue()
 		{
 			return Vector2FloatUtil.GetValue(sourceAxis, vector2.Value);
 		}
 
 		public override void Reset(GameObject attachedObject)
 		{
+			base.Reset(attachedObject);
 			vector2 = new AnyFlatVector2Accessor();
 			vector2.Reset(attachedObject);
 			setX = true;
@@ -38,7 +39,7 @@ namespace dninosores.UnityAccessors
 			fillValue = 0;
 		}
 
-		public override void SetValue(float value)
+		protected override void SetValue(float value)
 		{
 			Vector2 original = vector2.Value;
 			vector2.Value = new Vector2(FindValue(value, setX, original.x),

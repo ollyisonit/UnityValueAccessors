@@ -16,7 +16,7 @@ namespace dninosores.UnityAccessors
 			"the X position of a transform you would reference a Transform as the sourceObject and write 'position.x' here.")]
 		public string field;
 
-		public override T GetValue()
+		protected override T GetValue()
 		{
 			string[] pathArr = field.Split('.');
 			object current = sourceObject;
@@ -29,7 +29,7 @@ namespace dninosores.UnityAccessors
 
 		}
 
-		public override void SetValue(T value)
+		protected override void SetValue(T value)
 		{
 			string[] pathArr = field.Split('.');
 			object[] objects = new object[pathArr.Length + 1];

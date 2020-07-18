@@ -29,15 +29,15 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("valueType", ValueType.Constant, "Accessor")]
 		public ConstantBoolAccessor constant;
 
-		public override bool GetValue()
+		protected override bool GetValue()
 		{
 
 			switch (valueType)
 			{
 				case ValueType.Custom:
-					return customAccessor.GetValue();
+					return customAccessor.Value;
 				case ValueType.Reflected:
-					return reflectedAccessor.GetValue();
+					return reflectedAccessor.Value;
 				case ValueType.Constant:
 					return constant.Value;
 				default:
@@ -47,22 +47,18 @@ namespace dninosores.UnityAccessors
 
 		public override void Reset(GameObject attachedObject)
 		{
-			reflectedAccessor = new ReflectedBoolAccessor();
-			reflectedAccessor.Reset(attachedObject);
-			customAccessor =attachedObject.GetComponent<CustomBoolAccessor>();
-			constant = new ConstantBoolAccessor();
-			constant.Reset(attachedObject);
+			ResetAccessors.Reset(this, attachedObject);
 		}
 
-		public override void SetValue(bool value)
+		protected override void SetValue(bool value)
 		{
 			switch (valueType)
 			{
 				case ValueType.Reflected:
-					reflectedAccessor.SetValue(value);
+					reflectedAccessor.Value = (value);
 					break;
 				case ValueType.Custom:
-					customAccessor.SetValue(value);
+					customAccessor.Value = value;
 					break;
 				case ValueType.Constant:
 					constant.Value = value;

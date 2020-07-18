@@ -33,12 +33,12 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("valueType", ValueType.Random, "Accessor")]
 		public RandomIntAccessor random;
 
-		public override int GetValue()
+		protected override int GetValue()
 		{
 			switch (valueType)
 			{
 				case ValueType.Custom:
-					return customAccessor.GetValue();
+					return customAccessor.Value;
 				case ValueType.Reflected:
 					return reflectedAccessor.Value;
 				case ValueType.Constant:
@@ -51,21 +51,21 @@ namespace dninosores.UnityAccessors
 		}
 
 
-		public override void SetValue(int value)
+		protected override void SetValue(int value)
 		{
 			switch (valueType)
 			{
 				case ValueType.Custom:
-					customAccessor.SetValue(value);
+					customAccessor.Value = value;
 					break;
 				case ValueType.Reflected:
-					reflectedAccessor.SetValue(value);
+					reflectedAccessor.Value = value;
 					break;
 				case ValueType.Constant:
-					constant.SetValue(value);
+					constant.Value = value;
 					break;
 				case ValueType.Random:
-					random.SetValue(value);
+					random.Value = value;
 					break;
 				default:
 					throw new NotImplementedException("Case not found for " + valueType);

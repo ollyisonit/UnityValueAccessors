@@ -13,7 +13,7 @@ namespace dninosores.UnityAccessors
 		[Tooltip("Image to take color from")]
 		public Image image;
 
-		public override Color GetValue()
+		protected override Color GetValue()
 		{
 			return image.color;
 		}
@@ -23,7 +23,7 @@ namespace dninosores.UnityAccessors
 			image = attachedObject.GetComponent<Image>();
 		}
 
-		public override void SetValue(Color value)
+		protected override void SetValue(Color value)
 		{
 			image.color = value;
 		}

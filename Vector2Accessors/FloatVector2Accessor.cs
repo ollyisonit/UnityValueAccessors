@@ -32,7 +32,7 @@ namespace dninosores.UnityAccessors
 		public AnyFlatFloatAccessor y;
 
 
-		public override Vector2 GetValue()
+		protected override Vector2 GetValue()
 		{
 			switch (accessMode)
 			{
@@ -48,6 +48,7 @@ namespace dninosores.UnityAccessors
 
 		public override void Reset(GameObject o)
 		{
+			base.Reset(attachedObject);
 			Float = new AnyFlatFloatAccessor();
 			Float.Reset(o);
 			x = new AnyFlatFloatAccessor();
@@ -56,7 +57,7 @@ namespace dninosores.UnityAccessors
 			y.Reset(o);
 		}
 
-		public override void SetValue(Vector2 value)
+		protected override void SetValue(Vector2 value)
 		{
 			switch (accessMode)
 			{

@@ -29,7 +29,7 @@ namespace dninosores.UnityAccessors
 		public ColorChannel channel;
 
 
-		public override float GetValue()
+		protected override float GetValue()
 		{
 			switch (valueType)
 			{
@@ -52,7 +52,7 @@ namespace dninosores.UnityAccessors
 			}
 		}
 
-		public override void SetValue(float value)
+		protected override void SetValue(float value)
 		{
 			switch (valueType)
 			{

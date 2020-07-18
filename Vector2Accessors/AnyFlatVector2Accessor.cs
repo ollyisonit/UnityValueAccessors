@@ -37,14 +37,14 @@ namespace dninosores.UnityAccessors
 		[ConditionalHide("accessType", AccessType.Random, "Accessor")]
 		public RandomVector2Accessor random;
 
-		public override Vector2 GetValue()
+		protected override Vector2 GetValue()
 		{
 			switch (accessType)
 			{
 				case AccessType.RectTransform:
-					return rect.GetValue();
+					return rect.Value;
 				case AccessType.Custom:
-					return cust.GetValue();
+					return cust.Value;
 				case AccessType.Constant:
 					return constant.Value;
 				case AccessType.Reflected:
@@ -57,15 +57,15 @@ namespace dninosores.UnityAccessors
 		}
 
 
-		public override void SetValue(Vector2 value)
+		protected override void SetValue(Vector2 value)
 		{
 			switch (accessType)
 			{
 				case AccessType.RectTransform:
-					rect.SetValue(value);
+					rect.Value = value;
 					break;
 				case AccessType.Custom:
-					cust.SetValue(value);
+					cust.Value = value;
 					break;
 				case AccessType.Constant:
 					constant.Value = value;

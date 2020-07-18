@@ -39,7 +39,7 @@ namespace dninosores.UnityAccessors
 			bias = AnimationCurve.Linear(0, 0, 1, 1);
 		}
 
-		public override Vector3 GetValue()
+		protected override Vector3 GetValue()
 		{
 			switch (mode)
 			{
@@ -54,7 +54,7 @@ namespace dninosores.UnityAccessors
 			}
 		}
 
-		public override void SetValue(Vector3 value)
+		protected override void SetValue(Vector3 value)
 		{
 			Debug.LogWarning("Cannot set value of Random Accessor!");
 		}

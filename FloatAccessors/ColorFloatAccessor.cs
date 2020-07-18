@@ -21,13 +21,14 @@ namespace dninosores.UnityAccessors
 		public bool setA;
 		public AnyFlatColorAccessor color;
 
-		public override float GetValue()
+		protected override float GetValue()
 		{
 			return ColorFloatUtil.GetChannel(color.Value, sourceChannel);
 		}
 
 		public override void Reset(GameObject attachedObject)
 		{
+			base.Reset(attachedObject);
 			setR = false;
 			setG = false;
 			setB = false;
@@ -37,7 +38,7 @@ namespace dninosores.UnityAccessors
 			sourceChannel = ColorChannel.A;
 		}
 
-		public override void SetValue(float value)
+		protected override void SetValue(float value)
 		{
 			Color orig = color.Value;
 			color.Value = new Color(setR ? value : orig.r, setG ? value : orig.g,

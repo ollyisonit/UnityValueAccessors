@@ -22,7 +22,7 @@ namespace dninosores.UnityAccessors
 		[Tooltip("Where should the value be accessed from?")]
 		public TransformType transformType;
 
-		public override Vector3 GetValue()
+		protected override Vector3 GetValue()
 		{
 			switch (transformType)
 			{
@@ -46,7 +46,7 @@ namespace dninosores.UnityAccessors
 			transform = attachedObject.transform;
 		}
 
-		public override void SetValue(Vector3 value)
+		protected override void SetValue(Vector3 value)
 		{
 			switch (transformType)
 			{
