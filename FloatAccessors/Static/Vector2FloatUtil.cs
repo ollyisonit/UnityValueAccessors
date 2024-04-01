@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Gets and sets axes of Vector2s

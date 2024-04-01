@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Gets float value by taking one channel from a ColorAccessor.

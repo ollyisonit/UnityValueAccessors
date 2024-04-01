@@ -1,8 +1,8 @@
-﻿using dninosores.UnityEditorAttributes;
+﻿using ollyisonit.UnityEditorAttributes;
 using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Accessor containing a dropdown of all BoolAccessors that don't reference other BoolAccessors.

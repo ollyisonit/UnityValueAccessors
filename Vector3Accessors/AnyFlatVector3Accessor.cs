@@ -1,8 +1,8 @@
-﻿using dninosores.UnityEditorAttributes;
+﻿using ollyisonit.UnityEditorAttributes;
 using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Wrapper for all Vector3Accessors that don't contain nested references to AnyVector3Accessor

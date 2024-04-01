@@ -2,7 +2,7 @@
 using System.Reflection;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Accesses the a field of an object by name.

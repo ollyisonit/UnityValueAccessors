@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Accesses a constant Vector3
@@ -9,6 +9,6 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class ConstantVector3Accessor : ConstantAccessor<Vector3>
 	{
-	
+
 	}
 }

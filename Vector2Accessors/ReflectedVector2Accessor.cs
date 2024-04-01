@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Accesses a Vector2 from any object by name.
@@ -9,6 +9,6 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class ReflectedVector2Accessor : ReflectedAccessor<Vector2>
 	{
-		
+
 	}
 }

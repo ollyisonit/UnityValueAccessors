@@ -44,7 +44,7 @@ If you want to make an accessor for a type that isn't supported by the library, 
 If you have a lot of Accessors in a script, it can be annoying to need to call each of their Reset() methods individually. The ResetAccessors.Reset method will automatically find and reset all Accessor fields on the object you give it. If any of those fields are null, new Accessors of the appropriate type will be automatically created and reset to fill them.
 
 ## Dependencies
-This library requires that you have the [UnityEditorAttributes](https://github.com/dninosores/UnityEditorAttributes) library in your Unity project.
+This library requires that you have the [UnityEditorAttributes](https://github.com/ollyisonit/UnityEditorAttributes) library in your Unity project.
 
 ## Installation
 Download or clone this repository and drop it into your Unity project's Assets folder.

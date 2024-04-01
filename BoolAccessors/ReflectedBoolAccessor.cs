@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Access a boolean value from an object by name.
@@ -8,6 +8,6 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class ReflectedBoolAccessor : ReflectedAccessor<bool>
 	{
-	
+
 	}
 }

@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Stores a reference to a variable of the given type.
@@ -49,7 +49,7 @@ namespace dninosores.UnityAccessors
 					}
 					throw e;
 				}
-				
+
 			}
 		}
 

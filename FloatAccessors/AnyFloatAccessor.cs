@@ -1,8 +1,8 @@
-﻿using dninosores.UnityEditorAttributes;
+﻿using ollyisonit.UnityEditorAttributes;
 using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Front-facing Value Accessor that merges functionality of all standard float accessors into a single class for serialization in the unity editor.

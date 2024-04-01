@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Get constant color value.
@@ -9,6 +9,6 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class ConstantColorAccessor : ConstantAccessor<Color>
 	{
-	
+
 	}
 }

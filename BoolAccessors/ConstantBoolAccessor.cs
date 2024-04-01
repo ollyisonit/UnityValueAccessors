@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Access a constant boolean value.

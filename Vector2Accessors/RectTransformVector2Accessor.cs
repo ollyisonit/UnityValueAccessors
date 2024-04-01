@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Gets a Vector2 from a RectTransform.
@@ -15,9 +15,9 @@ namespace dninosores.UnityAccessors
 			anchorMax = 1,
 			anchorMin = 2,
 			offsetMax = 3,
-			offsetMin =4,
-			pivot =5,
-			sizeDelta =6
+			offsetMin = 4,
+			pivot = 5,
+			sizeDelta = 6
 		}
 
 		[Tooltip("Which field should the value be accessed from?")]
@@ -56,7 +56,8 @@ namespace dninosores.UnityAccessors
 
 		protected override void SetValue(Vector2 value)
 		{
-			switch (valueType){
+			switch (valueType)
+			{
 				case ValueType.anchoredPosition:
 					rect.anchoredPosition = value;
 					break;

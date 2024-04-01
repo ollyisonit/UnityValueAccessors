@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Accesses a constant float.
@@ -8,6 +8,6 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class ConstantFloatAccessor : ConstantAccessor<float>
 	{
-	
+
 	}
 }

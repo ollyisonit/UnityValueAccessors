@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
     /// <summary>
     /// Property drawer for implementations of AnyOrConstantAccessor.
@@ -10,8 +10,8 @@ namespace dninosores.UnityAccessors
     /// CustomPropertyDrawer attribute.
     /// </summary>
 	[CustomPropertyDrawer(typeof(AnyOrConstantAccessor<>), true)]
-	public class AnyOrConstantDrawer : PropertyDrawer
-	{
+    public class AnyOrConstantDrawer : PropertyDrawer
+    {
         private const float BOOL_SPACING = 0f;
         private const float BOOL_PADDING = 2f;
         private const float ACCESSOR_SPACING = 15;
@@ -35,18 +35,18 @@ namespace dninosores.UnityAccessors
             SerializedProperty constantValue = property.FindPropertyRelative("value");
             SerializedProperty accessorValue = property.FindPropertyRelative("accessorValue");
 
-           
+
 
             Rect boolRect = new Rect(rect.x, rect.y, EditorGUI.GetPropertyHeight(isAccessed) + BOOL_SPACING, EditorGUI.GetPropertyHeight(isAccessed));
-           // GUI.Button(boolRect, new GUIContent("C"));
+            // GUI.Button(boolRect, new GUIContent("C"));
             // EditorGUI.DrawRect(boolRect, Color.red);
-           isAccessed.boolValue = EditorGUI.Toggle(boolRect, new GUIContent("", "Toggles between constant and access mode"), isAccessed.boolValue, GUI.skin.button);
+            isAccessed.boolValue = EditorGUI.Toggle(boolRect, new GUIContent("", "Toggles between constant and access mode"), isAccessed.boolValue, GUI.skin.button);
 
 
             float spacing = EditorGUI.GetPropertyHeight(isAccessed) + BOOL_SPACING + BOOL_PADDING;
             rect.x += spacing;
             rect.width -= spacing;
-            
+
             if (!isAccessed.boolValue)
             {
                 EditorGUI.PropertyField(rect, constantValue, new GUIContent(property.displayName), true);

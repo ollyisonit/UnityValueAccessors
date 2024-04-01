@@ -1,4 +1,4 @@
-﻿namespace dninosores.UnityAccessors
+﻿namespace ollyisonit.UnityAccessors
 {
 	public enum Axis3D
 	{

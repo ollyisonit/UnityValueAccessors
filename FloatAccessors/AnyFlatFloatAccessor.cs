@@ -1,8 +1,8 @@
-﻿using dninosores.UnityEditorAttributes;
+﻿using ollyisonit.UnityEditorAttributes;
 using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Value Accessor that merges functionality of all standard float accessors into a single class for serialization in the unity editor.
@@ -18,7 +18,7 @@ namespace dninosores.UnityAccessors
 			Light = 2,
 			AudioSource = 3,
 
-	
+
 
 			Reflected = 7,
 			Custom = 8,

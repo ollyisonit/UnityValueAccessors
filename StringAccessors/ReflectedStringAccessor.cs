@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Accesses a string from any object by name.
@@ -8,6 +8,6 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class ReflectedStringAccessor : ReflectedAccessor<string>
 	{
-	
+
 	}
 }

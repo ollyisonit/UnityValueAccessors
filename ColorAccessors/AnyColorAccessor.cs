@@ -1,8 +1,8 @@
-﻿using dninosores.UnityEditorAttributes;
+﻿using ollyisonit.UnityEditorAttributes;
 using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Access a color using any existing color accessor.
@@ -64,7 +64,7 @@ namespace dninosores.UnityAccessors
 					image.Value = value;
 					break;
 				case AccessType.Light:
-					 light.Value = value;
+					light.Value = value;
 					break;
 				case AccessType.Custom:
 					custom.Value = value;

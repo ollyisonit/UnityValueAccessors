@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Accesses an integer from any object from the name of a field or property.
@@ -8,6 +8,6 @@ namespace dninosores.UnityAccessors
 	[Serializable]
 	public class ReflectedIntAccessor : ReflectedAccessor<int>
 	{
-	
+
 	}
 }

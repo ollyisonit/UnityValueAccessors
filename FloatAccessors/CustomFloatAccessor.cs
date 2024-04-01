@@ -1,4 +1,4 @@
-﻿namespace dninosores.UnityAccessors
+﻿namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Base class for user-defined FloatAccessors.

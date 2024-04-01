@@ -1,9 +1,9 @@
 ﻿
-using dninosores.UnityEditorAttributes;
+using ollyisonit.UnityEditorAttributes;
 using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Front-facing class combining functionality of all Color accessors with a toggle to switch between 

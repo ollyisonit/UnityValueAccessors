@@ -1,8 +1,8 @@
-﻿using dninosores.UnityEditorAttributes;
+﻿using ollyisonit.UnityEditorAttributes;
 using System;
 using UnityEngine;
 
-namespace dninosores.UnityAccessors
+namespace ollyisonit.UnityAccessors
 {
 	/// <summary>
 	/// Accesses a Vector3 using any of the other defined Vector3Accessors.
@@ -21,7 +21,7 @@ namespace dninosores.UnityAccessors
 			Custom = 4,
 			Constant = 5,
 			Random = 6
-							
+
 		}
 
 		[Tooltip("Where should the value be accessed from?")]
