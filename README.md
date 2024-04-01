@@ -4,7 +4,7 @@ A serializable object that allows scripts to reference the fields of other objec
 ## What is an Accessor?
 In the same way that creating a public `float` field in a script adds a corresponding input box on the component where users can type in a `float` value, creating a public `FloatOrConstantAccessor` field creates an input area where users can create a reference that links to another `float` value in the scene. This is what an accessor looks like in the Unity editor:
 
-![](assets/accessor_example.PNG)
+![](readme-assets/accessor_example.PNG)
 
 ``` c#
 public class AccessorDemo : MonoBehaviour
