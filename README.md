@@ -1,4 +1,7 @@
 # Unity Value Accessors
+
+![](UnityValueAccessorIcon.jpg)
+
 A serializable object that allows scripts to reference the fields of other objects in the scene from within the Unity editor.
 
 ## What is an Accessor?
